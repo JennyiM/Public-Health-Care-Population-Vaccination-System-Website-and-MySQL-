@@ -119,7 +119,7 @@ function display_person($a){
  if (mysqli_query($conn, $sql2)) {
   echo "New record created successfully";
 } else {
-  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
 }
     $conn->close();
    set_message("PERSON CREATED");
@@ -159,7 +159,7 @@ function display_person($a){
 if (mysqli_query($conn, $sql2)) {
  echo "New record created successfully";
 } else {
- echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+ echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
 }
    $conn->close();
   set_message("PERSON CREATED");
