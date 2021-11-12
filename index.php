@@ -36,7 +36,7 @@
             if(isset($_GET['delete_person'])){
           
           
-                include(TEMPLATE . "/delete_person");
+                include(TEMPLATE . "/delete_person.php");
         
         
             }
