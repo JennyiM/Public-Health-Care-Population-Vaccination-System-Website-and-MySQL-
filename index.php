@@ -33,6 +33,13 @@
         
         
             }
+            if(isset($_GET['delete_person'])){
+          
+          
+                include(TEMPLATE . "/delete_person");
+        
+        
+            }
 
               if(isset($_GET['orders'])){
 

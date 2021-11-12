@@ -168,4 +168,21 @@ if (mysqli_query($conn, $sql2)) {
 }
 }
 
+function delete_person(){
+  if (isset($_POST['delete_person'])) {
+  $conn = connect();
+  $personID = $_POST['personID'];
+  $sql = "UPDATE person SET deleted_ = 1 WHERE personID = '$personID'";
+    if (mysqli_query($conn, $sql)) {
+      echo "Delete successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+   $conn->close();
+  set_message("PERSON DELETED");
+  redirect("index.php?person");
+  exit();
+  }
+}
+
 ?>
