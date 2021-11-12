@@ -30,7 +30,10 @@
                 </thead>
                 <tbody role="rowgroup">
                   
-                <?php display_person(); ?>
+                <?php display_person(1); 
+                
+                
+                ?>
               
                 </tbody>
             </table>

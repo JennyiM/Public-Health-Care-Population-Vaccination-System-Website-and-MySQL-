@@ -39,10 +39,12 @@ function redirect($location)
   return header("Location: $location ");
 }
 
-function display_person(){
+function display_person($a){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-  $query = "SELECT * FROM person";
+  $personID = (int) $a;
+  $query = "SELECT * FROM person Where person.personID = $personID;";
+  echo $query;
   if($result = $mysqli-> query($query)){
     while ($row = $result->fetch_assoc()){
       $personID = $row["personID"];
