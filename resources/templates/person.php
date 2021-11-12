@@ -23,7 +23,7 @@
                       <input type="submit" name="search_person" class="btn btn-dark pull-right" value="Search Person" >
                 </div>
             </div>
-            
+            <h6 class="bg-success"><?php display_message(); ?></h6>            
            
         </form>
             <table class="table table-hover" role="table">
