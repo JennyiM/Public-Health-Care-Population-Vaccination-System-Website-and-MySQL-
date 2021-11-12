@@ -18,13 +18,21 @@
           
               }
               
-              if(isset($_GET['add_person'])){
+              if(isset($_GET['add_person_in'])){
           
           
-                  include(TEMPLATE . "/add_person.php");
+                  include(TEMPLATE . "/add_person_in.php");
           
           
               }
+
+              if(isset($_GET['add_person_out'])){
+          
+          
+                include(TEMPLATE . "/add_person_out.php");
+        
+        
+            }
 
               if(isset($_GET['orders'])){
 

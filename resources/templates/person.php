@@ -9,8 +9,23 @@
                     <li class="breadcrumb-item active" aria-current="page">person</li>
                 </ol>
             </nav>
-            <button type="button" class="btn btn-dark btn-adduser"onclick="window.location.href='index.php?add_person'">Add person</button>
-          
+           
+            <form class="user_info" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+            <button type="button" class="btn btn-dark btn-adduser"onclick="window.location.href='index.php?add_person_in'">Add person in system</button>
+            <button type="button" class="btn btn-dark btn-adduser"onclick="window.location.href='index.php?add_person_out'">Add person out system</button>
+                <div class="col-lg-4 mb-3">
+                    <label for="personID">Person ID</label>
+                    <input type="text" name="personID" placeholder="Person ID"  required>
+                </div>
+                     <!--    confirm button-->
+                <div class="confirm_button col-lg-4 mb-3">
+                      <input type="submit" name="search_person" class="btn btn-dark pull-right" value="Search Person" >
+                </div>
+            </div>
+            
+           
+        </form>
             <table class="table table-hover" role="table">
                 <thead role="rowgroup">
                 <tr role="row">
@@ -30,7 +45,14 @@
                 </thead>
                 <tbody role="rowgroup">
                   
-                <?php display_person(1); 
+                <?php 
+                $personID = 0;
+                  if (isset($_POST['search_person'])) {
+                      $personID = (int) $_POST['personID'];
+
+                  }
+                
+                display_person($personID); 
                 
                 
                 ?>
