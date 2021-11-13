@@ -48,10 +48,10 @@
 
 
               }
-              if(isset($_GET['edit_order'])){
+              if(isset($_GET['edit_outperson'])){
 
 
-                 include(TEMPLATE . "/edit_order.php");
+                 include(TEMPLATE . "/edit_outperson.php");
 
 
              }
