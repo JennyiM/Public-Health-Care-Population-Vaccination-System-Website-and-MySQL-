@@ -1,7 +1,5 @@
 <?php 
 
-
-
 if(isset($_GET['id'])){
     //edit_person($_GET['id']);
     verify_person($_GET['id']);

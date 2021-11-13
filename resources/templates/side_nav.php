@@ -33,7 +33,6 @@
                 <li class="nav-item">
                     <a class="nav-link pl-0" href="index.php?age_group"><i class="fas fa-sitemap"></i><span class="d-none d-md-inline">&nbsp Age Group</span></a>
                 </li>
-               
             </ul>
         </div>
     </nav>

@@ -27,7 +27,4 @@
   </div>
   <!-- Sidebar Menu items -->
   <div class="row min-vh-100 flex-column flex-md-row">
-    <?php include(TEMPLATE . "/side_nav.php"); 
-    ?>
-    
-    
+    <?php include(TEMPLATE . "/side_nav.php"); ?>

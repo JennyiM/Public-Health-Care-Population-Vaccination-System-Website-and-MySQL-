@@ -36,7 +36,7 @@ function display_message()
 function redirect($location)
 {
 
-  return header("Location: $location ");
+  return header("Location: $location");
 }
 
 //person part
@@ -187,7 +187,7 @@ function delete_person(){
 }
 
 function verify_person($a){
-  
+    // ob_start();
     $conn = connect();
     $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
     $personID = (int)$a;
@@ -196,10 +196,9 @@ function verify_person($a){
     $num = mysqli_num_rows($result);
     if($num != '0' ){
 
-       redirect("index.php?edit_outperson&id=$personID");
+      echo("<script>location.href = 'index.php?edit_outperson&id=$personID';</script>");
+      //  redirect("index.php?edit_outperson&id=$personID");
     }
 }
-
-
 
 ?>
