@@ -41,10 +41,10 @@
         
             }
 
-              if(isset($_GET['orders'])){
+              if(isset($_GET['edit_inperson'])){
 
 
-                  include(TEMPLATE . "/order.php");
+                  include(TEMPLATE . "/edit_inperson.php");
 
 
               }
