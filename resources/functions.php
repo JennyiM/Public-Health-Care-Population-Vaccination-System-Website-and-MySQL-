@@ -185,4 +185,20 @@ function delete_person(){
   }
 }
 
+function verify_person($a){
+  
+    $conn = connect();
+    $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+    $personID = (int)$a;
+    $query = "SELECT * FROM out_sys_person WHERE out_sys_person.personID = $personID;";
+    $result = $mysqli-> query($query);
+    $num = mysqli_num_rows($result);
+    if($num != '0' ){
+
+       redirect("index.php?edit_outperson&id=$personID");
+    }
+}
+
+
+
 ?>
