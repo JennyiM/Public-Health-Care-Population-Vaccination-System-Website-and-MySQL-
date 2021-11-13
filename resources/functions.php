@@ -84,7 +84,40 @@ function display_person($a){
     }
     $result->free();
   }
+
+  $query1 = "SELECT * FROM infection_history Where personID = $personID;";
+  if($result1 = $mysqli-> query($query1)){
+    while ($row1 = $result1->fetch_assoc()){
+      $startDate = $row1["startDate"];
+      $endDate = $row1["endDate"];
+      $infectionType = $row1["infectionType"];
+      
+      $infectionlist = <<<DELIMETER
+      <table class="table table-hover" role="table">
+        <thead role="rowgroup">
+           <tr role="row">
+           <th scope="col" role="columnheader">Infection Start Date</th>
+           <th scope="col" role="columnheader">Infection End Date</th>
+           <th scope="col" role="columnheader">Infection Type</th>
+        </tr>
+        <tr role="row">
+          <td row="cell">{$startDate}</td>
+          <td row="cell">{$endDate}</td>
+          <td row="cell">{$infectionType}</td>
+      </tr> 
+        </thead>
+       <tbody role="rowgroup">
+        </tbody>
+       </table>
+      
+      DELIMETER;
+    
+      echo $infectionlist;
+    }
+    $result1->free();
+  }
 }
+
 
  function add_person_in(){
    if (isset($_POST['add_person_in'])) {
