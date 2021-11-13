@@ -10,23 +10,23 @@
         <h3>Welcome!</h3>
         <div class="row">
             <div class="item-bar col-lg-3  col-md-6 col-sm-12">
-                <a class="nav-link" href="index.php?orders"><i class="fab fa-first-order-alt"></i>
-                 <p>Vaccin Type</p>
+                <a class="nav-link" href="index.php?perform_vaccine"><i class="fab fa-first-order-alt"></i>
+                 <p>Perform Vaccine</p>
                 </a>
             </div>
             <div class="item-bar col-lg-3 col-md-6 col-sm-12">
-                <a class="nav-link" href="index.php?products"><i class="fas fa-chart-bar"></i>
-                <p>View products</p>
+                <a class="nav-link" href="index.php?reports"><i class="fas fa-chart-bar"></i>
+                <p>View reports</p>
                 </a>
             </div>
             <div class="item-bar col-lg-3 col-md-6 col-sm-12">
-                <a class="nav-link" href="index.php?add_product"><i class="fas fa-cart-plus"></i>
-                <p>Add products</p>
+                <a class="nav-link" href="index.php?Facility_information"><i class="fas fa-cart-plus"></i>
+                <p>Facility information </p>
                 </a>
             </div>
             <div class="item-bar col-lg-3 col-md-6 col-sm-12">
-                <a class="nav-link" href="index.php?person"><i class="fas fa-users"></i>
-                <p>Person</p>
+                <a class="nav-link" href="index.php?person_information"><i class="fas fa-users"></i>
+                <p>Person information</p>
                 </a>
             </div>
         </div>

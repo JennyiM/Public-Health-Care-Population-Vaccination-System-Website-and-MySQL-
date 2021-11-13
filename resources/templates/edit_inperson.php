@@ -161,7 +161,7 @@ if(isset($_GET['id'])){
             <!--    confirm button-->
             <div class="form-row">
                 <div class="confirm_button col-lg-12">
-                     <a id="user-id" class="btn btn-danger" href="">Delete</a>
+                     <a id="user-id" class="btn btn-danger" href="">Cancel</a>
                       <input type="submit" name="update_person_in" class="btn btn-dark pull-right" value="Update changes" >
                 </div>
             </div>

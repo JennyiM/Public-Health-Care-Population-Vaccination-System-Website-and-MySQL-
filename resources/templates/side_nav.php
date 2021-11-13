@@ -7,19 +7,31 @@
                     <a class="nav-link pl-0 text-nowrap" href="index.php"><i class="fas fa-home"></i> <span class="font-weight-bold">Home</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="index.php?province"><i class="fab fa-first-order-alt"></i> <span class="d-none d-md-inline">Province</span></a>
+                    <a class="nav-link pl-0" href="index.php?province"><i class="fas fa-globe-americas"></i> <span class="d-none d-md-inline">Province</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="index.php?facility"><i class="fas fa-chart-bar"></i> <span class="d-none d-md-inline">Facility</span></a>
+                    <a class="nav-link pl-0" href="index.php?facility"><i class="fas fa-clinic-medical"></i> <span class="d-none d-md-inline">Facility</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="index.php?public_worker"><i class="fas fa-cart-plus"></i> <span class="d-none d-md-inline">Public Worker</span></a>
+                    <a class="nav-link pl-0" href="index.php?public_worker"><i class="fas fa-user-md"></i><span class="d-none d-md-inline">Public Worker</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link pl-0" href="index.php?person"><i class="fas fa-users"></i> <span class="d-none d-md-inline">Person</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="index.php?vaccin_type"><i class="fas fa-users"></i> <span class="d-none d-md-inline">Vaccin Type</span></a>
+                    <a class="nav-link pl-0" href="index.php?vaccine_type"><i class="fas fa-crutch"></i> <span class="d-none d-md-inline">Vaccine Type</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pl-0" href="index.php?infection_type"><i class="fas fa-head-side-mask"></i> <span class="d-none d-md-inline">Infection Type</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pl-0" href="index.php?age_group"><i class="fas fa-sitemap"></i><span class="d-none d-md-inline">Age Group</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pl-0" href="index.php?appointment"><i class="far fa-calendar-check"></i> <span class="d-none d-md-inline">Appointment</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pl-0" href="index.php?assignment"><i class="fas fa-hands-helping"></i><span class="d-none d-md-inline">Assignment</span></a>
                 </li>
             </ul>
         </div>

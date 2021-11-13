@@ -69,7 +69,7 @@
             <!--    confirm button-->
             <div class="form-row">
                 <div class="confirm_button col-lg-12">
-                     <a id="user-id" class="btn btn-danger" href="">Delete</a>
+                     <a id="user-id" class="btn btn-danger" href="">Cancel</a>
                       <input type="submit" name="add_person_out" class="btn btn-dark pull-right" value="Add Person out System" >
                 </div>
             </div>
