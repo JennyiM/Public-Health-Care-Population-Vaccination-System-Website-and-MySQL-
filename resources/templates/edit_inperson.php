@@ -1,8 +1,10 @@
 <?php 
 
+
+
 if(isset($_GET['id'])){
     //edit_person($_GET['id']);
-     
+    verify_person($_GET['id']);
     $conn = connect();
     $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
     $personID = (int)$_GET['id'];
