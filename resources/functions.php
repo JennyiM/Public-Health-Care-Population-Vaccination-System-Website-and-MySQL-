@@ -73,7 +73,7 @@ function display_person($a){
           <td row="cell">{$phone}</td>
           <td row="cell">{$email}</td>
          <td>
-              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_person&id={}'">Edit</button>
+              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_inperson&id=$personID'">Edit</button>
               <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_person_id={}'">Delete</button>
           </td> 
       </tr> 
