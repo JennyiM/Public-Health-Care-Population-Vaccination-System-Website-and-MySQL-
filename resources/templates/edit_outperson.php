@@ -1,10 +1,8 @@
-<?php 
-
-
+<?php
 
 if(isset($_GET['id'])){
     //edit_person($_GET['id']);
-    verify_person($_GET['id']);
+     
     $conn = connect();
     $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
     $personID = (int)$_GET['id'];
@@ -27,17 +25,16 @@ if(isset($_GET['id'])){
             
     }
     
-    $queryB = "SELECT * FROM in_sys_person Where in_sys_person.personID = $personID;";
+    $queryB = "SELECT * FROM out_sys_person Where out_sys_person.personID = $personID;";
     if($result = $mysqli-> query($queryB)){
         while ($row = $result->fetch_assoc()){
             $personID = $row["personID"];
-            $medicalCardNum = $row["medicalCardNum"];
-            $mCardIssueDate = $row["mCardIssueDate"];
-            $mCardEndDate = $row["mCardEndDate"];
+            $passport = $row["passport"];
+    
         }
     }
 
-    if(isset($_POST['update_person_in'])){
+    if(isset($_POST['update_person_out'])){
             
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
@@ -49,20 +46,17 @@ if(isset($_GET['id'])){
         $postcode = $_POST['postcode'];
         $phone = $_POST['phone'];
         $email = $_POST['email'];
-        $medicalCardNum = $_POST['medicalCardNum'];
-        $mCardIssueDate = $_POST['mCardIssueDate'];
-        $mCardEndDate = $_POST['mCardEndDate'];
-
-                
+        $passport = $_POST['passport'];
+      
         $sql1 = "UPDATE person
                 SET firstName = '$firstname', lastName = '$lastname', birthDate = '$birthDate', citizenship = '$citizenship', city = '$city', province = '$province', address = '$address', postCode =  '$postcode', phone = '$phone', email = '$email'
                 WHERE person.personID = $personID;";
             
             
             
-        $sql2 = "UPDATE in_sys_person 
-                SET medicalCardNum = '$medicalCardNum', mCardIssueDate = '$mCardIssueDate', mCardEndDate = '$mCardEndDate'
-                WHERE in_sys_person.personID = $personID;";
+        $sql2 = "UPDATE out_sys_person 
+                SET passport = '$passport'
+                WHERE out_sys_person.personID = $personID;";
 
 
 
@@ -80,7 +74,11 @@ if(isset($_GET['id'])){
     $conn->close();
 }
 
+
 ?>
+
+
+
 
 <div class="main col-lg-9 col-md-9 py-3 flex-grow-1 ">
         <!--    breadcrumb link-->
@@ -145,28 +143,20 @@ if(isset($_GET['id'])){
             </div>
             
             <div class="form-row">
-                <div class="col-lg-4 mb-3">
-                    <label for="medicalCardNum">Medical Card Number</label>
-                    <input type="text"  name="medicalCardNum" placeholder="Medical Card Number" value="<?php echo $medicalCardNum; ?>" >
-                </div>
+                
                 <div class="col-lg-4 mb-3">
                     <label for="mCardIssueDate">Medical Card Issue Date</label>
-                    <input type="text"  name="mCardIssueDate" placeholder="Medical Card Issue Date" value="<?php echo $mCardIssueDate; ?>" >
+                    <input type="text"  name="passport" placeholder="passport" value="<?php echo $passport; ?>" >
                 </div>
-                <div class="col-lg-4 mb-3">
-                    <label for="mCardEndDate">Medical Card End Date</label>
-                    <input type="text"  name="mCardEndDate" placeholder="Medical Card End Date" value="<?php echo $mCardEndDate; ?>" >
-                </div>
+                
             </div>
             <!--    confirm button-->
             <div class="form-row">
                 <div class="confirm_button col-lg-12">
                      <a id="user-id" class="btn btn-danger" href="">Delete</a>
-                      <input type="submit" name="update_person_in" class="btn btn-dark pull-right" value="Update changes" >
+                      <input type="submit" name="update_person_out" class="btn btn-dark pull-right" value="Update changes" >
                 </div>
             </div>
         </form>
     </div>
 </div>
-
-
