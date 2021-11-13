@@ -3,9 +3,10 @@
 if(isset($_GET['id'])){
     //edit_person($_GET['id']);
      
-    $conn= connect();
+    $conn = connect();
     $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
     $personID = (int)$_GET['id'];
+    
     $queryA = "SELECT * FROM person Where person.personID = $personID;";
     if($result = $mysqli-> query($queryA)){
         while ($row = $result->fetch_assoc()){
