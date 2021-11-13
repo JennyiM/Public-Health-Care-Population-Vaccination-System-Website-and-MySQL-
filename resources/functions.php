@@ -44,7 +44,7 @@ function display_person($a){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
   $personID = (int) $a;
-  $query = "SELECT * FROM person Where person.personID = $personID;";
+  $query = "SELECT * FROM person Where person.personID = $personID AND person.deleted_ = 0;";
   if($result = $mysqli-> query($query)){
     while ($row = $result->fetch_assoc()){
       $personID = $row["personID"];
@@ -74,7 +74,7 @@ function display_person($a){
           <td row="cell">{$email}</td>
          <td>
               <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_inperson&id=$personID'">Edit</button>
-              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_person_id={}'">Delete</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_person&id=$personID'">Delete</button>
           </td> 
       </tr> 
       
@@ -169,9 +169,10 @@ if (mysqli_query($conn, $sql2)) {
 }
 
 function delete_person(){
-  if (isset($_POST['delete_person'])) {
+  if (isset($_GET['id'])) {
   $conn = connect();
-  $personID = $_POST['personID'];
+  $personID = (int)$_GET['id'];
+  echo $personID;
   $sql = "UPDATE person SET deleted_ = 1 WHERE personID = '$personID'";
     if (mysqli_query($conn, $sql)) {
       echo "Delete successfully";
