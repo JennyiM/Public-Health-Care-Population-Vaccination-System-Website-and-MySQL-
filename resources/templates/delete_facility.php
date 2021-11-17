@@ -1,11 +1,9 @@
 <?php
-
-
 function delete_facility(){
     if (isset($_GET['id'])) {
     $conn = connect();
     $facilityID = (int)$_GET['id'];
-    echo $personID;
+    //echo $personID;
     $sql = "UPDATE facility SET deleted_ = 1 WHERE facilityID = '$facilityID'";
       if (mysqli_query($conn, $sql)) {
         echo "Delete successfully";
