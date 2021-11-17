@@ -301,4 +301,97 @@ if (mysqli_query($conn, $sql2)) {
   exit();
 }
 }
+
+function display_facility($a){
+  connect();
+  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $facilityID = (int) $a;
+  $query = "SELECT * FROM facility Where facility.facilityID= $facilityID AND facility.deleted_ = 0;";
+  if($result = $mysqli-> query($query)){
+    while ($row = $result->fetch_assoc()){
+      $facilityID = $row["facilityID"];
+      $facilityName = $row["facilityName"];
+      $type = $row["type"];
+      $capacity = $row["capacity"];
+      $address = $row["address"]; 
+      $phone = $row["phone"];
+      $webAddress = $row["webAddress"];
+      $managerID = $row["managerID"];
+      $totalNumEmployee = $row["totalNumEmployee"];
+      $totalNumNurse = $row["totalNumNurse"]; 
+      $province = $row["province"];
+      $openHours = $row["openHours"];
+      $closeHours = $row["closeHours"];
+      
+      $personlist = <<<DELIMETER
+      <tr role="row">
+          <td row="cell">{$facilityID}</td>
+          <td row="cell">{$facilityName}</td>
+          <td row="cell">{$type}</td>
+          <td row="cell">{$capacity}</td>
+          <td row="cell">{$address}</td>
+          <td row="cell">{$phone}</td>
+          <td row="cell">{$webAddress}</td>
+          <td row="cell">{$managerID}</td>
+          <td row="cell">{$totalNumEmployee}</td>
+          <td row="cell">{$totalNumNurse}</td>
+          <td row="cell">{$province}</td>
+          <td row="cell">{$openHours}</td>
+          <td row="cell">{$closeHours}</td>
+         <td>
+              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_facility&id=$facilityID'">Edit</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_facility&id=$facilityID'">Delete</button>
+          </td> 
+      </tr> 
+      
+      DELIMETER;
+    
+      echo $personlist;
+    }
+    $result->free();
+  }
+}
+
+function add_facility(){
+  if(isset($_POST['add_facility'])) {
+  $conn = connect();
+  $query = "SELECT facilityID FROM facility";
+  $result = mysqli_query($conn,$query);
+  $rowcount =mysqli_num_rows($result);
+  $facilityID = ((int) $rowcount) + 1 ;
+  //echo $facilityID;
+    //$facilityID = $_POST["facilityID"];
+    $facilityName = $_POST["facilityName"];
+    $type = $_POST["type"];
+    $capacity = $_POST["capacity"];
+    $address = $_POST["address"]; 
+    $phone = $_POST["phone"];
+    $webAddress = $_POST["webAddress"];
+    $managerID = $_POST["managerID"];
+    $totalNumEmployee = $_POST["totalNumEmployee"];
+    $totalNumNurse = $_POST["totalNumNurse"]; 
+    $province = $_POST["province"];
+    $openHours = $_POST["openHours"];
+    $closeHours = $_POST["closeHours"];
+    
+    $sql = "INSERT INTO facility
+    VALUES ($facilityID,'$facilityName','$type','$capacity','$address','$phone','$webAddress','$managerID'
+          ,'$totalNumEmployee','$totalNumNurse','$province', '$openHours', '$closeHours', 0);";
+    
+    if (mysqli_query($conn, $sql)) {
+      echo "New record created successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    
+    $conn->close();
+    set_message("FACILITY CREATED");
+    //redirect("index.php?person");
+    echo("<script>location.href = 'index.php?facility';</script>");
+    exit();
+
+  }
+
+ 
+}
 ?>
