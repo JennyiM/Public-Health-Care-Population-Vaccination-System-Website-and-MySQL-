@@ -114,7 +114,7 @@
 
                 include(TEMPLATE . "/delete_public_worker.php");
 
-
+              }
 
                if(isset($_GET['add_product'])){
 
