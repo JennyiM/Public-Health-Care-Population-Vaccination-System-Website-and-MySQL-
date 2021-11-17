@@ -141,7 +141,7 @@ function display_person($a){
    $mCardIssueDate = $_POST['mCardIssueDate'];
    $mCardEndDate = $_POST['mCardEndDate'];
    $sql = "INSERT INTO person
-     VALUES ($personID,'$firstname','$lastname','$birthDate','$citizenship','$city','$province','$address','$postcode','$phone','$email');";
+     VALUES ($personID,'$firstname','$lastname','$birthDate','$citizenship','$city','$province','$address','$postcode','$phone','$email',0);";
    $sql2 = "INSERT INTO in_sys_person 
    VALUES ($personID,'$medicalCardNum','$mCardIssueDate','$mCardEndDate');";
     if (mysqli_query($conn, $sql)) {
@@ -181,7 +181,7 @@ function display_person($a){
   $email = $_POST['email'];
   $passport = $_POST['passport'];
   $sql = "INSERT INTO person
-    VALUES ($personID,'$firstname','$lastname','$birthDate','$citizenship','$city','$province','$address','$postcode','$phone','$email');";
+    VALUES ($personID,'$firstname','$lastname','$birthDate','$citizenship','$city','$province','$address','$postcode','$phone','$email', 0);";
   $sql2 = "INSERT INTO out_sys_person 
   VALUES ($personID,'$passport');";
    if (mysqli_query($conn, $sql)) {
@@ -214,7 +214,8 @@ function delete_person(){
     }
    $conn->close();
   set_message("PERSON DELETED");
-  redirect("index.php?person");
+  //redirect("index.php?person");
+  echo("<script>location.href = 'index.php?person';</script>");
   exit();
   }
 }
