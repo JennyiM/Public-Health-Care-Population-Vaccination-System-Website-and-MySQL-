@@ -56,6 +56,24 @@
 
              }
 
+//appointment
+
+               if(isset($_GET['appointment'])){
+
+
+                include(TEMPLATE . "/appointment.php");
+
+
+              }
+
+
+               if(isset($_GET['add_appointment'])){
+
+
+                  include(TEMPLATE . "/add_appointment.php");
+
+
+              }
 
                if(isset($_GET['products'])){
 
