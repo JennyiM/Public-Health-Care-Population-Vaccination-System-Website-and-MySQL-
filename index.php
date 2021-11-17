@@ -3,7 +3,7 @@
 
 
 <?php
-              if($_SERVER['REQUEST_URI'] == "/index.php" )  {
+              if($_SERVER['REQUEST_URI'] == "/COMP353_Covid19/index.php" )  {
 
 
                   include(TEMPLATE . "/admin_content.php");
@@ -124,6 +124,57 @@
 
 
               }
+              
+              if(isset($_GET['facility'])){
+
+
+                include(TEMPLATE . "/facility.php");
+
+
+            }
+            if(isset($_GET['edit_facility'])){
+
+
+                include(TEMPLATE . "/edit_facility.php");
+
+
+            }
+            if(isset($_GET['add_facility'])){
+
+
+                include(TEMPLATE . "/add_facility.php");
+
+
+            }
+            if(isset($_GET['delete_facility'])){
+
+
+                include(TEMPLATE . "/delete_facility.php");
+
+
+            }
+
+            if(isset($_GET['perform_vaccine'])){
+
+
+                include(TEMPLATE . "/perform_vaccine.php");
+
+
+            }
+            if(isset($_GET['perform_vaccine_withapm'])){
+
+
+                include(TEMPLATE . "/perform_vaccine_withapm.php");
+
+
+            }
+            if(isset($_GET['performingform'])){
+
+
+                include(TEMPLATE . "/performingform.php");
+
+
+            }
 
                ?>
 <?php include(TEMPLATE . "/footer.php") ?>
