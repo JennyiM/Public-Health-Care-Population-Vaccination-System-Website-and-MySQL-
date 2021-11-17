@@ -3,7 +3,7 @@
 
 
 <?php
-              if($_SERVER['REQUEST_URI'] == "/COMP353_Covid19/index.php" )  {
+              if($_SERVER['REQUEST_URI'] == "/index.php" )  {
 
 
                   include(TEMPLATE . "/admin_content.php");
