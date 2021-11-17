@@ -67,13 +67,21 @@
               }
 
 
-               if(isset($_GET['add_appointment'])){
+               if(isset($_GET['add_appointment_check'])){
 
 
-                  include(TEMPLATE . "/add_appointment.php");
+                  include(TEMPLATE . "/add_appointment_check.php");
 
 
               }
+
+              if(isset($_GET['add_appointment'])){
+
+
+                include(TEMPLATE . "/add_appointment.php");
+
+
+            }
 
                if(isset($_GET['public_worker'])){
 
