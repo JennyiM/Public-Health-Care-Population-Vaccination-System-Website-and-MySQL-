@@ -75,13 +75,37 @@
 
               }
 
-               if(isset($_GET['products'])){
+               if(isset($_GET['public_worker'])){
 
 
-                include(TEMPLATE . "/products.php");
+                include(TEMPLATE . "/public_worker.php");
 
 
               }
+
+
+               if(isset($_GET['add_public_worker'])){
+
+
+                  include(TEMPLATE . "/add_public_worker.php");
+
+
+              }
+
+
+               if(isset($_GET['edit_public_worker'])){
+
+
+                  include(TEMPLATE . "/edit_public_worker.php");
+
+
+              }
+
+              if(isset($_GET['delete_public_worker'])){
+
+
+                include(TEMPLATE . "/delete_public_worker.php");
+
 
 
                if(isset($_GET['add_product'])){
