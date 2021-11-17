@@ -233,5 +233,71 @@ function verify_person($a){
       //  redirect("index.php?edit_outperson&id=$personID");
     }
 }
+//appointment
+function display_appointment($personID, $date){
+  connect();
+  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $personID = (int) $personID;
+  $query = "SELECT * FROM appointment Where personID = $personID AND appointment.date = '$date' AND deleted_ = 0;";
+  if($result = $mysqli-> query($query)){
+    while ($row = $result->fetch_assoc()){
+      $personID = $row["personID"];
+      $facilityID = $row["facilityID"];
+      $date = $row["date"];
+      $timeslot = $row["timeslot"];
+      
+      $appointlist = <<<DELIMETER
+      <tr role="row">
+          <td row="cell">{$personID}</td>
+          <td row="cell">{$facilityID}</td>
+          <td row="cell">{$date}</td>
+          <td row="cell">{$timeslot}</td>
+         <td>
+              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_appointment&id=$personID'">Edit</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_person&id=$personID'">Delete</button>
+          </td> 
+      </tr> 
+      
+      DELIMETER;
+    
+      echo $appointlist;
+    }
+    $result->free();
+  }
+}
 
+function add_appointment(){
+  if (isset($_POST['add_appointment'])) {
+  $conn = connect();
+  // $query = "SELECT personID FROM person";
+  // $result = mysqli_query($conn,$query);
+  // $rowcount =mysqli_num_rows($result);
+  // $personID = ((int) $rowcount) + 1 ;
+  // echo $personID;
+  $personID = $_POST['personID'];
+  $facilityID = $_POST['facilityID'];
+  $date = $_POST['date'];
+  $timeslot = $_POST['timeslot'];
+  
+  $ageGroup = 
+  $sql = "INSERT INTO person
+    VALUES ($personID,'$firstname','$lastname','$birthDate','$citizenship','$city','$province','$address','$postcode','$phone','$email');";
+  $sql2 = "INSERT INTO out_sys_person 
+  VALUES ($personID,'$passport');";
+   if (mysqli_query($conn, $sql)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+if (mysqli_query($conn, $sql2)) {
+ echo "New record created successfully";
+} else {
+ echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+}
+   $conn->close();
+  set_message("PERSON CREATED");
+  redirect("index.php?person");
+  exit();
+}
+}
 ?>
