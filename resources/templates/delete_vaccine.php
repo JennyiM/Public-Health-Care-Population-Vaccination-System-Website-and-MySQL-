@@ -1,0 +1,1 @@
+<?php delete_vaccine_type(); ?>  
