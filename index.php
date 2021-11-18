@@ -121,37 +121,37 @@
             }
 
 
-//Assignment-----------------------------------------------------------
+//assigned-----------------------------------------------------------
 
-              if(isset($_GET['assignment'])){
-
-
-                    include(TEMPLATE . "/assignment.php");
+              if(isset($_GET['assigned'])){
 
 
-              }
-
-
-               if(isset($_GET['add_assignment'])){
-
-
-                  include(TEMPLATE . "/add_assignment.php");
+                    include(TEMPLATE . "/assigned.php");
 
 
               }
 
-              if(isset($_GET['edit_assignment'])){
+
+               if(isset($_GET['add_assigned'])){
 
 
-                    include(TEMPLATE . "/edit_assignment.php");
+                  include(TEMPLATE . "/add_assigned.php");
 
 
               }
 
-              if(isset($_GET['delete_assignment'])){
+              if(isset($_GET['edit_assigned'])){
 
 
-                  include(TEMPLATE . "/delete_assignment.php");
+                    include(TEMPLATE . "/edit_assigned.php");
+
+
+              }
+
+              if(isset($_GET['delete_assigned'])){
+
+
+                  include(TEMPLATE . "/delete_assigned.php");
 
               }
 
