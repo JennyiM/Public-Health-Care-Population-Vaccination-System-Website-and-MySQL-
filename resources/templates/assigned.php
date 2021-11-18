@@ -11,14 +11,14 @@
            
             <form class="user_info" action="" method="post" enctype="multipart/form-data">
             <div class="form-row">
-            <button type="button" class="btn btn-dark btn-adduser"onclick="window.location.href='index.php?add_assigned'">Add assigned</button>
+            <button type="button" class="btn btn-dark btn-adduser"onclick="window.location.href='index.php?add_assigned'">Add assignement</button>
                 <div class="col-lg-4 mb-3">
                     <label for="SSN">SSN</label>
                     <input type="text" name="SSN" placeholder="SSN"  required>
                 </div>
                      <!--    confirm button-->
                 <div class="confirm_button col-lg-4 mb-3">
-                      <input type="submit" name="search_assigned" class="btn btn-dark pull-right" value="Search assigned" >
+                      <input type="submit" name="search_assigned" class="btn btn-dark pull-right" value="Search assignment" >
                 </div>
             </div>
             <h6 class="bg-success"><?php display_message(); ?></h6>            
