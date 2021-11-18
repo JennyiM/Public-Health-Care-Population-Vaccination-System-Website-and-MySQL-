@@ -208,6 +208,87 @@
 
 
             }
+              if(isset($_GET['age_group'])){
+
+
+                include(TEMPLATE . "/age_group.php");
+
+
+            }
+
+            if(isset($_GET['add_age_group'])){
+
+
+                include(TEMPLATE . "/add_age_group.php");
+
+
+            }
+            if(isset($_GET['edit_age_group'])){
+
+
+                include(TEMPLATE . "/edit_age_group.php");
+
+
+            }
+            if(isset($_GET['delete_age_group'])){
+
+
+                include(TEMPLATE . "/delete_age_group.php");
+
+
+            }
+
+            if(isset($_GET['add_province'])){
+
+
+                include(TEMPLATE . "/add_province.php");
+
+
+            }
+
+            if(isset($_GET['province'])){
+
+
+                include(TEMPLATE . "/province.php");
+
+
+            }
+            if(isset($_GET['vaccine_type'])){
+
+
+                include(TEMPLATE . "/vaccine_type.php");
+
+
+            }
+            if(isset($_GET['add_vaccine'])){
+
+
+                include(TEMPLATE . "/add_vaccine.php");
+
+
+            }
+            if(isset($_GET['edit_vaccine_type'])){
+
+
+                include(TEMPLATE . "/edit_vaccine_type.php");
+
+
+            }
+            if(isset($_GET['delete_vaccine'])){
+
+
+                include(TEMPLATE . "/delete_vaccine.php");
+
+
+            }
+            //Q14
+            if(isset($_GET['display_no_nurse'])){
+
+
+                include(TEMPLATE . "/display_no_nurse.php");
+
+
+            }
 
                ?>
 <?php include(TEMPLATE . "/footer.php") ?>
