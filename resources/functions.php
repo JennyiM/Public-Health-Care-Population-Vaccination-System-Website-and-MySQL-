@@ -236,11 +236,11 @@ function verify_person($a){
 }
 //appointment
 //appointment
-function display_appointment($personID, $date){
+function display_appointment($personID, $doseNum){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
   $personID = (int) $personID;
-  $query = "SELECT * FROM appointment Where personID = $personID AND appointment.date = '$date' AND deleted_ = 0;";
+  $query = "SELECT * FROM appointment Where personID = $personID AND appointment.doseNumber = '$doseNum' AND deleted_ = 0;";
   if($result = $mysqli-> query($query)){
     while ($row = $result->fetch_assoc()){
       $personID = $row["personID"];
