@@ -67,21 +67,53 @@
               }
 
 
-               if(isset($_GET['add_appointment'])){
+               if(isset($_GET['add_appointment_check'])){
 
 
-                  include(TEMPLATE . "/add_appointment.php");
+                  include(TEMPLATE . "/add_appointment_check.php");
+
+
+              }
+
+              if(isset($_GET['add_appointment'])){
+
+
+                include(TEMPLATE . "/add_appointment.php");
+
+
+            }
+
+               if(isset($_GET['public_worker'])){
+
+
+                include(TEMPLATE . "/public_worker.php");
 
 
               }
 
-               if(isset($_GET['products'])){
+
+               if(isset($_GET['add_public_worker'])){
 
 
-                include(TEMPLATE . "/products.php");
+                  include(TEMPLATE . "/add_public_worker.php");
 
 
               }
+
+
+               if(isset($_GET['edit_public_worker'])){
+
+
+                  include(TEMPLATE . "/edit_public_worker.php");
+
+
+              }
+
+              if(isset($_GET['delete_public_worker'])){
+
+
+                include(TEMPLATE . "/delete_public_worker.php");
+
 
 
                if(isset($_GET['add_product'])){
