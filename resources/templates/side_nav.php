@@ -19,7 +19,7 @@
                     <a class="nav-link pl-0" href="index.php?appointment"><i class="far fa-calendar-check"></i> <span class="d-none d-md-inline">Appointment</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="index.php?assignment"><i class="fas fa-hands-helping"></i><span class="d-none d-md-inline">Assignment</span></a>
+                    <a class="nav-link pl-0" href="index.php?assigned"><i class="fas fa-hands-helping"></i><span class="d-none d-md-inline">Assignment</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link pl-0" href="index.php?vaccine_type"><i class="fas fa-crutch"></i> <span class="d-none d-md-inline">Vaccine Type</span></a>
