@@ -11,7 +11,7 @@
            
             <form class="user_info" action="" method="post" enctype="multipart/form-data">
             <div class="form-row">
-            <button type="button" class="btn btn-dark btn-adduser"onclick="window.location.href='index.php?add_appointment'">Add appointment</button>
+            <button type="button" class="btn btn-dark btn-adduser"onclick="window.location.href='index.php?add_appointment_check'">Add appointment</button>
                 <div class="col-lg-4 mb-3">
                     <label for="personID">Person ID</label>
                     <input type="text" name="personID" placeholder="person ID"  required>
@@ -32,6 +32,7 @@
                     <th scope="col" role="columnheader">Person ID</th>
                     <th scope="col" role="columnheader">Facility ID</th>
                     <th scope="col" role="columnheader">Date</th>
+                    <th scope="col" role="columnheader">Dose Number</th>
                     <th scope="col" role="columnheader">Time Slot</th>
                 </tr>
                 </thead>
