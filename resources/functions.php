@@ -490,5 +490,153 @@ function add_assigned(){
     }
 }
 
+function display_ageGroup($a){
+  connect();
+  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $groupID = (int) $a;
+  $query = "SELECT * FROM age_group Where age_group.groupID = $groupID AND age_Group.deleted_ = 0;";
+  if($result = $mysqli-> query($query)){
+    while ($row = $result->fetch_assoc()){
+      $groupID = $row["groupID"];
+      $StartDate = $row["startDate"];
+      $EndDate = $row["endDate"];
+      $Age=$row["age"];
+      
+      $agegrouplist = <<<DELIMETER
+      <tr role="row">
+          <td row="cell">{$groupID}</td>
+          <td row="cell">{$StartDate}</td>
+          <td row="cell">{$EndDate}</td>
+          <td row="cell">{$Age}</td>
+         <td>
+              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_age_group&id=$groupID'">Edit</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_age_group&id=$groupID'">Delete</button>
+          </td> 
+      </tr> 
+      
+      DELIMETER;
+    
+      echo $agegrouplist;
+    }
+    $result->free();
+  }
+}
 
+function add_age_group(){
+  if(isset($_POST['add_age_group'])) {
+  $conn = connect();
+  $query = "SELECT groupID FROM age_group;";
+  $result = mysqli_query($conn,$query);
+  $rowcount =mysqli_num_rows($result);
+  $groupID = ((int) $rowcount) + 1 ;
+  echo $groupID;
+ 
+  $startDate = $_POST['startDate'];
+  $endDate = $_POST['endDate'];
+  $age=$_POST['age'];
+  $sql = "INSERT INTO age_group 
+    VALUES ($groupID,'$startDate','$endDate','$age',0);";
+   if (mysqli_query($conn, $sql)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+   $conn->close();
+  set_message("age group CREATED");
+  echo("<script>location.href = 'index.php?age_group';</script>");
+  exit();
+}
+}
+function delete_age_group(){
+  if (isset($_GET['id'])) {
+  $conn = connect();
+  $groupID = (int)$_GET['id'];
+  echo $groupID;
+  $sql = "UPDATE age_group SET deleted_ = 1 WHERE groupID = '$groupID'";
+    if (mysqli_query($conn, $sql)) {
+      echo "Delete successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+   $conn->close();
+  set_message("AGE GROUP DELETED");
+  //redirect("index.php?person");
+  echo("<script>location.href = 'index.php?age_group';</script>");
+
+  exit();
+  }
+}
+function display_vaccintype($a){
+  connect();
+  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $lotNumber = $a;
+  $query = "SELECT * FROM vaccin_status Where vaccin_status.lotNumber = '$lotNumber' AND vaccin_status.deleted_ = 0;";
+  if($result = $mysqli-> query($query)){
+    while ($row = $result->fetch_assoc()){
+      $lotNumber = $row["lotNumber"];
+      $vaccintype = $row["type"];
+      $suspendedDate = $row["suspendedDate"];
+      $approvedDate = $row["approvedDate"];
+      $status = $row["status"];
+
+      $vaccintypelist = <<<DELIMETER
+      <tr role="row">
+          <td row="cell">{$lotNumber}</td>
+          <td row="cell">{$vaccintype}</td>
+          <td row="cell">{$suspendedDate}</td>
+          <td row="cell">{$approvedDate}</td>
+          <td row="cell">{$status}</td>
+         <td>
+              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_vaccine_type&lotNumber=$lotNumber'">Edit</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_vaccine&lotNumber=$lotNumber'">Delete</button>
+          </td> 
+      </tr> 
+      
+      DELIMETER;
+    
+      echo $vaccintypelist;
+    }
+    $result->free();
+  }
+}
+function add_vaccine_type(){
+  if(isset($_POST['add_vaccine_type'])) {
+  $conn = connect();
+  $lotNumber=$_POST['lotNumber'];
+  $type = $_POST['type'];
+  $suspenedDate = $_POST['suspenedDate'];
+  $approvedDate = $_POST['approvedDate'];
+  $status = $_POST['status'];
+  $sql = "INSERT INTO vaccin_status 
+    VALUES ('$lotNumber','$type','$suspenedDate','$approvedDate','$status',0);";
+   if (mysqli_query($conn, $sql)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+   $conn->close();
+  set_message("new vaccin information CREATED");
+  //debug redirect("index.php?age_group");
+  echo("<script>location.href = 'index.php?vaccine_type';</script>");
+  exit();
+}
+}
+function delete_vaccine_type(){
+  if (isset($_GET['lotNumber'])) {
+  $conn = connect();
+  $lotNumber = $_GET['lotNumber'];
+  echo $lotNumber;
+  $sql = "UPDATE vaccin_status SET deleted_ = 1 WHERE lotNumber = '$lotNumber'";
+    if (mysqli_query($conn, $sql)) {
+      echo "Delete successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+   $conn->close();
+  set_message("VACCINE DELETED");
+  echo("<script>location.href = 'index.php?vaccine_type';</script>");
+
+  exit();
+  }
+}
 ?>
