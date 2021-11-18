@@ -175,6 +175,77 @@
 
               }
 
+//public worker--------------------------------------------------------------              
+
+               if(isset($_GET['public_worker'])){
+
+
+                include(TEMPLATE . "/public_worker.php");
+
+
+              }
+
+
+               if(isset($_GET['add_public_worker'])){
+
+
+                  include(TEMPLATE . "/add_public_worker.php");
+
+
+              }
+
+
+               if(isset($_GET['edit_public_worker'])){
+
+
+                  include(TEMPLATE . "/edit_public_worker.php");
+
+
+              }
+
+              if(isset($_GET['delete_public_worker'])){
+
+
+                include(TEMPLATE . "/delete_public_worker.php");
+
+
+            }
+
+
+//Assignment-----------------------------------------------------------
+
+              if(isset($_GET['assignment'])){
+
+
+                    include(TEMPLATE . "/assignment.php");
+
+
+              }
+
+
+               if(isset($_GET['add_assignment'])){
+
+
+                  include(TEMPLATE . "/add_assignment.php");
+
+
+              }
+
+              if(isset($_GET['edit_assignment'])){
+
+
+                    include(TEMPLATE . "/edit_assignment.php");
+
+
+              }
+
+              if(isset($_GET['delete_assignment'])){
+
+
+                  include(TEMPLATE . "/delete_assignment.php");
+
+              }
+
 
 //facility
               

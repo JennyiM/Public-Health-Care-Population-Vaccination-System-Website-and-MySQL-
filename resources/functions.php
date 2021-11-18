@@ -419,4 +419,76 @@ function add_public_worker(){
     }
 }
 
+function display_assignment($a){
+  connect();
+  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $SSN = (int) $a;
+  $query = "SELECT a.SSN, p.firstName,p.lastName, f.facilityName,pw.title,a.startDate,a.endDate,a.hourly_rate,a.facilityID,a.employee_ID
+            FROM assignment a, public_worker pw,person p, facility f
+            WHERE a.SSN=$SSN AND a.SSN = pw.SSN AND pw.personID = p.personID AND f.facilityID = a.facilityID AND a.deleted_ = 0;";
+  if($result = $mysqli-> query($query)){
+      while ($row = $result->fetch_assoc()){
+        $SSN = $row["SSN"];
+        $firstName = $row["firstName"];
+        $lastName = $row["lastName"];
+        $facilityName = $row["facilityName"];
+        $title = $row["title"];
+        $startDate = $row["startDate"];
+        $endDate = $row["endDate"];
+        $hourly_rate = $row["hourly_rate"];
+        $facilityID = $row["facilityID"];
+        $employee_ID = $row["employee_ID"];
+
+
+        $assignlist = <<<DELIMETER
+        <tr role="row">
+            <td row="cell">{$SSN}</td>
+            <td row="cell">{$firstName}</td>
+            <td row="cell">{$lastName}</td>
+            <td row="cell">{$facilityName}</td>            
+            <td row="cell">{$title}</td>
+            <td row="cell">{$startDate}</td>
+            <td row="cell">{$endDate}</td>
+            <td row="cell">{$hourly_rate}</td>
+
+          <td>
+                <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_assignment&SSN=$SSN&employee_ID=$employee_ID&facilityID=$facilityID'">Edit</button>
+                <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_assignment&SSN=$SSN&employee_ID=$employee_ID&facilityID=$facilityID'">Delete</button>
+            </td> 
+        </tr> 
+        DELIMETER;
+      
+        echo $assignlist;
+      }
+      $result->free();
+    }
+}
+
+
+function add_assignment(){
+  if(isset($_POST['add_assignment'])) {
+      $conn = connect();
+      $SSN = $_POST["SSN"];
+      $employee_ID = $_POST["employee_ID"];
+      $startDate = $_POST["startDate"];
+      $endDate = $_POST["endDate"];
+      $facilityID = $_POST["facilityID"];
+      $hourly_rate = $_POST["hourly_rate"];
+      $sql = "INSERT INTO assignment VALUES ($SSN,$employee_ID,'$startDate','$endDate',$facilityID,$hourly_rate,0);";
+      
+      if (mysqli_query($conn, $sql)) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      }
+      
+      $conn->close();
+      set_message("Assignment CREATED");
+      echo("<script>location.href = 'index.php?assignment';</script>");
+      exit();
+  
+    }
+}
+
+
 ?>
