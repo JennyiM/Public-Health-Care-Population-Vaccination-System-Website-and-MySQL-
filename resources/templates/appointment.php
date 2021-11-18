@@ -15,8 +15,8 @@
                 <div class="col-lg-4 mb-3">
                     <label for="personID">Person ID</label>
                     <input type="text" name="personID" placeholder="person ID"  required>
-                    <label for="date">Date</label>
-                    <input type="text" name="date" placeholder="date"  required>
+                    <label for="doseNumber">Dose Number</label>
+                    <input type="text" name="doseNumber" placeholder="Dose Number"  required>
                 </div>
                      <!--    confirm button-->
                 <div class="confirm_button col-lg-4 mb-3">
@@ -40,13 +40,13 @@
                   
                 <?php 
                 $personID = 0;
-                $date = "";
+                $doseNumber = "";
                   if (isset($_POST['search_appointment'])) {
                       $personID = (int) $_POST['personID'];
-                      $date = $_POST['date'];
+                      $doseNumber = $_POST['doseNumber'];
                   }
                 
-                 display_appointment($personID,$date); 
+                 display_appointment($personID,$doseNumber); 
                 
                 
                 ?>
