@@ -288,7 +288,71 @@
                 include(TEMPLATE . "/display_no_nurse.php");
 
 
+            } 
+// Province function get
+            if(isset($_GET['province'])){
+
+
+                include(TEMPLATE . "/province.php");
+
+
             }
+            if(isset($_GET['add_province'])){
+
+
+                include(TEMPLATE . "/add_province.php");
+
+
+            }
+            if(isset($_GET['edit_province'])){
+
+
+                include(TEMPLATE . "/edit_province.php");
+
+
+            }
+
+            if(isset($_GET['delete_province'])){
+
+
+                include(TEMPLATE . "/delete_province.php");
+
+
+            }
+
+//Infection Type
+            if(isset($_GET['infection_type'])){
+
+
+                include(TEMPLATE . "/infection_type.php");
+
+
+            }
+            if(isset($_GET['add_infection_type'])){
+
+
+                include(TEMPLATE . "/add_infection_type.php");
+
+
+            }
+
+            if(isset($_GET['edit_infection_type'])){
+
+
+                include(TEMPLATE . "/edit_infection_type.php");
+
+
+            }
+
+            if(isset($_GET['delete_infection_type'])){
+
+
+                include(TEMPLATE . "/delete_infection_type.php");
+
+
+            }
+
+            
 
                ?>
 <?php include(TEMPLATE . "/footer.php") ?>

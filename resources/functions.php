@@ -236,11 +236,11 @@ function verify_person($a){
 }
 //appointment
 //appointment
-function display_appointment($personID, $date){
+function display_appointment($personID, $doseNum){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
   $personID = (int) $personID;
-  $query = "SELECT * FROM appointment Where personID = $personID AND appointment.date = '$date' AND deleted_ = 0;";
+  $query = "SELECT * FROM appointment Where personID = $personID AND appointment.doseNumber = '$doseNum' AND deleted_ = 0;";
   if($result = $mysqli-> query($query)){
     while ($row = $result->fetch_assoc()){
       $personID = $row["personID"];
@@ -638,5 +638,124 @@ function delete_vaccine_type(){
 
   exit();
   }
+}
+// province
+function display_province($a){
+  connect();
+  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $provinceName = $a;
+  $query = "SELECT * FROM province Where province.provinceName = '$provinceName' AND province.deleted_ = 0;" ;
+  if($result = $mysqli-> query($query)){
+    while ($row = $result->fetch_assoc()){
+      $provinceName = $row["provinceName"];
+      $provStartDate = $row["provStartDate"];
+      $vacAgeGroup = $row["vacAgeGroup"];
+    
+      
+      $provincelist = <<<DELIMETER
+      <tr role="row">
+          <td row="cell">{$provinceName}</td>
+          <td row="cell">{$provStartDate}</td>
+          <td row="cell">{$vacAgeGroup}</td>
+          
+         <td>
+              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_province&id=$provinceName'">Edit</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_province&id=$provinceName'">Delete</button>
+          </td> 
+      </tr> 
+      
+      DELIMETER;
+    
+      echo $provincelist;
+    }
+    $result->free();
+  }
+}
+
+function add_province(){
+  if (isset($_POST['add_province'])) {
+    $conn = connect();
+    $query = "SELECT provinceName FROM province";
+    $result = mysqli_query($conn,$query);
+    //$rowcount =mysqli_num_rows($result);
+    //$provinceName = ((int) $rowcount) + 1 ;
+    //echo $provinceName;
+    $provinceName = $_POST['provinceName'];
+    $provStartDate = $_POST['provStartDate'];
+    $vacAgeGroup = $_POST['vacAgeGroup'];
+
+    $sql = "INSERT INTO province
+      VALUES ('$provinceName','$provStartDate',$vacAgeGroup,0);";
+   
+   if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+  $conn->close();
+  set_message("PROVINCE CREATED");
+  //redirect("index.php?province");
+  echo("<script>location.href = 'index.php?province&id=$provinceName';</script>");
+  exit();
+}
+}
+
+//Infection Type
+function display_infection_type($a){
+  connect();
+  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $typeID = (int)$a;
+  $query = "SELECT * FROM infection_type Where infection_type.typeID = $typeID; /*AND person.deleted_ = 0;*/" ;
+  if($result = $mysqli-> query($query)){
+    while ($row = $result->fetch_assoc()){
+      $typeID = $row["typeID"];
+      $virus_type = $row["virus_type"];
+
+    
+      
+      $infection_typelist = <<<DELIMETER
+      <tr role="row">
+          <td row="cell">{$typeID}</td>
+          <td row="cell">{$virus_type}</td>
+         
+          
+         <td>
+              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_infection_type&id=$typeID'">Edit</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_infection_type&id=$typeID'">Delete</button>
+          </td> 
+      </tr> 
+      
+      DELIMETER;
+    
+      echo $infection_typelist;
+    }
+    $result->free();
+  }
+}
+
+function add_infection_type(){
+  if (isset($_POST['add_infection_type'])) {
+  $conn = connect();
+  $query = "SELECT typeID FROM infection_type";
+  $result = mysqli_query($conn,$query);
+  $rowcount =mysqli_num_rows($result);
+  $typeID = ((int) $rowcount);
+  echo $typeID;
+  $virus_type = $_POST['virus_type'];
+ 
+  $sql = "INSERT INTO infection_type
+    VALUES ($typeID,'$virus_type',0);";
+  
+  if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+   $conn->close();
+  set_message("INFECTION TYPE CREATED");
+  //redirect("index.php?infection_type");
+  echo("<script>location.href = 'index.php?infection_type&id=$typeID';</script>");
+  exit();
+}
 }
 ?>
