@@ -1,60 +1,50 @@
 <?php
-
-function search_appointment($a){
-  connect();
-  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-  $personID = (int) $a;
-  $query = "SELECT person.personID, person.firstName, person.lastName, facility.address, facility.facilityID, appointment.doseNumber
-            FROM person, facility, appointment
-            Where person.personID = $personID
-                AND person.deleted_ = 0
-                AND appointment.personID = $personID
-                AND appointment.deleted_ = 0 
-                AND appointment.facilityID = facility.facilityID
-                AND facility.deleted_ = 0;";
- 
-  if($result = $mysqli-> query($query)){
-    while ($row = $result->fetch_assoc()){
-        $personID = $row["personID"];
-        $firstName = $row["firstName"];
-        $lastName = $row["lastName"];
-        $middleInitial = '';
-        $facilityID = $row["facilityID"];
-        $address = $row["address"];
-        $doseNumber = $row["doseNumber"];
-
-      $personlist = <<<DELIMETER
-      <tr role="row">
-          <td row="cell">{$personID}</td>
-          <td row="cell">{$firstName}</td>
-          <td row="cell">{$lastName}</td>
-          <td row="cell">{$middleInitial}</td>
-          <td row="cell">{$address}</td>
+    function search_person($a){
+        connect();
+        $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+        $personID = (int) $a;
+        $query = "SELECT person.personID, person.firstName, person.lastName
+                  FROM person
+                  Where person.personID = $personID
+                      AND person.deleted_ = 0;";
+                     
+       
+        if($result = $mysqli-> query($query)){
+          while ($row = $result->fetch_assoc()){
+              $personID = $row["personID"];
+              $firstName = $row["firstName"];
+              $lastName = $row["lastName"];
+      
+            $personlist = <<<DELIMETER
+            <tr role="row">
+                <td row="cell">{$personID}</td>
+                <td row="cell">{$firstName}</td>
+                <td row="cell">{$lastName}</td>
+                <td row="cell"></td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?perform_vaccine_withoutapm&id=$personID&firstName=$firstName&lastName=$lastName'">Confirm</button>
+                </td> 
+            </tr> 
+            
+            
+            DELIMETER;
           
-          <td>
-              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?performingform&id=$personID&facilityID=$facilityID&doseNumber=$doseNumber'">Confirm</button>
-          </td> 
-      </tr> 
+            echo $personlist;
       
+          //是不是要让已经接种过的appointment消失
+          //UPDATE appointment SET deleted_ = 1 WHERE appointment.personID  appointment.facilityID
+          
       
-      DELIMETER;
-    
-      echo $personlist;
-
-    //是不是要让已经接种过的appointment消失
-    //UPDATE appointment SET deleted_ = 1 WHERE appointment.personID  appointment.facilityID
-    
+          }
+          $result->free();
+          
+        }
 
     }
-    $result->free();
-    
-  }
-}
+
+
 
 ?>
-
-
-
 <div class="main col-lg-9 col-md-9 py-3 flex-grow-1 ">
         <!--users information-->
             <!--    breadcrumb link-->
@@ -92,7 +82,7 @@ function search_appointment($a){
                     <th scope="col" role="columnheader">First name</th>
                     <th scope="col" role="columnheader">Last name</th>
                     <th scope="col" role="columnheader">Middle initial</th>
-                    <th scope="col" role="columnheader">Location</th>
+                    <th scope="col" role="columnheader"></th>
                 </tr>
                 </thead>
                 <tbody role="rowgroup">
@@ -104,7 +94,7 @@ function search_appointment($a){
 
                   }
                 
-                search_appointment($personID); 
+                search_person($personID); 
                 
                 
                 ?>

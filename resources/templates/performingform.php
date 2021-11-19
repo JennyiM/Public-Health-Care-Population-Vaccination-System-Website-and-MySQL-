@@ -1,10 +1,11 @@
 <?php
 
-if(isset($_GET['id']) AND isset($_GET['facilityID'])){
+if(isset($_GET['id']) AND isset($_GET['facilityID']) AND isset($_GET['doseNumber'])  ){
     $conn = connect();
     $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
     $personID = (int)$_GET['id'];
     $facilityID = (int)$_GET['facilityID'];
+    $doseNumber = (int)$_GET['doseNumber'];
     
     $queryA = "SELECT * FROM person Where person.personID = $personID;";
     if($result = $mysqli-> query($queryA)){
@@ -16,7 +17,7 @@ if(isset($_GET['id']) AND isset($_GET['facilityID'])){
             
     }
 
-   
+  
 }   
 
     if(isset($_POST['perform_a_vaccine'])){
@@ -27,13 +28,20 @@ if(isset($_GET['id']) AND isset($_GET['facilityID'])){
         $workingID = $_POST['workingID'];
         $date = $_POST['date'];
         $doseNumber = $_POST['doseNumber'];
+        
+    
              
         $sql1 = "INSERT INTO vaccination
                     VALUES ($personID,'$lotNumber',$facilityID,$workingID,'$date',$doseNumber,0);";
 
+        $sql2 = "UPDATE appointment
+                 SET appointment.deleted_ = 1
+                 WHERE appointment.personID = $personID 
+                       AND appointment.doseNumber = $doseNumber;";
 
 
-        if (mysqli_query($conn, $sql1)) {
+
+        if (mysqli_query($conn, $sql1) AND mysqli_query($conn, $sql2)) {
             echo "Record creates successfully";
         } 
         else {
@@ -109,7 +117,7 @@ if(isset($_GET['id']) AND isset($_GET['facilityID'])){
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="doseNumber">doseNumber</label>
-                    <input type="text"  name="doseNumber" placeholder="doseNumber" required>
+                    <input type="text"  name="doseNumber" placeholder="doseNumber" value="<?php echo $doseNumber; ?>">
                 </div>
             
             </div>
