@@ -238,21 +238,7 @@
 
             }
 
-            if(isset($_GET['add_province'])){
 
-
-                include(TEMPLATE . "/add_province.php");
-
-
-            }
-
-            if(isset($_GET['province'])){
-
-
-                include(TEMPLATE . "/province.php");
-
-
-            }
             if(isset($_GET['vaccine_type'])){
 
 
@@ -348,6 +334,23 @@
 
 
                 include(TEMPLATE . "/delete_infection_type.php");
+
+
+            }
+
+// without appointment
+            if(isset($_GET['perform_vaccine_withoutapm'])){
+
+
+                include(TEMPLATE . "/perform_vaccine_withoutapm.php");
+
+
+            }
+
+            if(isset($_GET['perform_vaccine_findperson'])){
+
+
+                include(TEMPLATE . "/perform_vaccine_findperson.php");
 
 
             }
