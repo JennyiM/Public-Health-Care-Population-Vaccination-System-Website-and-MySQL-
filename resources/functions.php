@@ -257,8 +257,8 @@ function display_appointment($personID, $doseNum){
           <td row="cell">{$doseNum}</td>
           <td row="cell">{$timeslot}</td>
          <td>
-              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_appointment&id=$personID'">Edit</button>
-              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_person&id=$personID'">Delete</button>
+              <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_appointment&id=$personID&dose=$doseNum'">Edit</button>
+              <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_appointment&id=$personID&dose=$doseNum'">Delete</button>
           </td> 
       </tr> 
       
