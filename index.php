@@ -9,7 +9,7 @@
                   include(TEMPLATE . "/admin_content.php");
 
               }
-//person              
+//person ------------------------------------------------------             
               if(isset($_GET['person'])){
           
           
@@ -56,7 +56,7 @@
 
              }
 
-//appointment
+//appointment----------------------------------------------------
 
                if(isset($_GET['appointment'])){
 
@@ -82,6 +82,22 @@
 
 
             }
+            if(isset($_GET['edit_appointment'])){
+
+
+                include(TEMPLATE . "/edit_appointment.php");
+
+
+            }
+
+            if(isset($_GET['delete_appointment'])){
+
+
+                include(TEMPLATE . "/delete_appointment.php");
+
+
+            }
+
 
 
 //public worker--------------------------------------------------------------              
@@ -156,7 +172,7 @@
               }
 
 
-//facility
+//facility------------------------------------------------
               
               if(isset($_GET['facility'])){
 
@@ -275,7 +291,7 @@
 
 
             } 
-// Province function get
+// Province function get---------------------------------------------------------
             if(isset($_GET['province'])){
 
 
@@ -306,7 +322,7 @@
 
             }
 
-//Infection Type
+//Infection Type-----------------------------------------------
             if(isset($_GET['infection_type'])){
 
 
@@ -338,7 +354,7 @@
 
             }
 
-// without appointment
+// without appointment---------------------------------------------------
             if(isset($_GET['perform_vaccine_withoutapm'])){
 
 
