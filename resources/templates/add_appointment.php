@@ -33,7 +33,7 @@ while($spot_time <= $closehrs){
     $spot_str = date("h:i:s",$spot_time);
     $sql = "SELECT timeslot 
     FROM appointment
-    WHERE facilityID = $facilityID AND date = '$startds' AND timeslot ='$spot_str';";
+    WHERE facilityID = $facilityID AND date = '$startds' AND timeslot ='$spot_str' AND deleted_ = 0;";
     $result = mysqli_query($conn,$sql);
     $rowcount = (int) mysqli_num_rows($result);
 
@@ -42,7 +42,8 @@ while($spot_time <= $closehrs){
     // echo "rowcount". $rowcount;
 
     if($rowcount == 0){
-        $spot_list =  "<option value='$spot_str' > $spot_str </option>" . $spot_list;
+        $spot_list =  "<option value='' > $spot_str </option>" . $spot_list;
+        // $_SESSION['timeslot'] = $spot_str;
         break;
     }
    
@@ -55,7 +56,35 @@ if($spot_list == ''){
     $_SESSION["date"] = date("Y-m-d",($startDate + 86400));
     echo("<script>window.location.reload();</script>");
 }
+//  $_SESSION['timeslot'] = $spot_str;
 $conn->close();
+
+if (isset($_POST['add_appointment'])) {
+    $conn = connect();
+    $personID = $_POST['personID'];
+    $facilityID = $_POST['facilityID'];
+    $doseNum = $_POST['dosenum'];
+    $date = $_POST['date'];
+    $timeslot = $_SESSION['timeslot'];
+    echo $timeslot;
+    $sql = "INSERT INTO appointment
+      VALUES ($personID,'$facilityID','$date','$timeslot','$doseNum',0);";
+   
+     if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+  if (mysqli_query($conn, $sql)) {
+   echo "New record created successfully";
+ } else {
+   echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+ }
+     $conn->close();
+    set_message("APPOINTMENT CREATED");
+    echo("<script>location.href = 'index.php?appointment';</script>");
+    exit();
+  }
 // 
 // while($spot_time <= $closehrs){
 //     $spot_str = date("h:i:s",$spot_time);
@@ -114,7 +143,7 @@ $conn->close();
                     <input type="date" class="input-medium search-query" onkeypress="return false" name="date" value = "<?php echo $_SESSION["date"]; ?>" required>
                 </div>
                 <!-- <div class="col-lg-4 mb-3"> -->
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <select class="form-select form-select-lg mb-3" name = "<?php echo $_SESSION["timeslot"]; ?>" aria-label=".form-select-lg example">
                    <option selected>Choose a Timeslot</option>
                   <?php echo $spot_list; ?>
                 </select>

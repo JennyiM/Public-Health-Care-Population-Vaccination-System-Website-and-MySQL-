@@ -31,40 +31,47 @@ if (isset($_POST['add_appointment_check'])) {
     // $dose_1 = (int) $row3[0];
     
     $doseNum = (int)$doseNum;
-    if ($doseNum == 1){
+    if($ageGroup_province == 0){
+        echo("<script>location.href = 'index.php?appointment';</script>");
+            set_message("Right now, it is short of vaccine!");
+    }
+    else{
+        if ($doseNum == 1){
       
-        if($ageGroup_person <= $ageGroup_province ||$personID_p != 0){
-        $_SESSION["personID"] = $personID;
-        $_SESSION["facilityID"] = $facilityID;
-        $_SESSION["doseNum"] = $doseNum;
-        $_SESSION["date"] = $date;
-        // print_r($_SESSION);
-        echo("<script>location.href = 'index.php?add_appointment';</script>");
+            if($ageGroup_person <= $ageGroup_province ||$personID_p != 0){
+            $_SESSION["personID"] = $personID;
+            $_SESSION["facilityID"] = $facilityID;
+            $_SESSION["doseNum"] = $doseNum;
+            $_SESSION["date"] = $date;
+            // print_r($_SESSION);
+            echo("<script>location.href = 'index.php?add_appointment';</script>");
+            }
+            else if($ageGroup_person > $ageGroup_province) {
+                echo("<script>location.href = 'index.php?appointment';</script>");
+                set_message("The appointment is not available for your age!");
+            }
         }
-        else if($ageGroup_person > $ageGroup_province) {
+        else if ($doseNum == 2){
+           if($dose_1 == '' && $ageGroup_person <= $ageGroup_province){
+            echo("<script>location.href = 'index.php?appointment';</script>");
+            set_message("Please book an appointment for Dose 1!");
+           }
+           else if($dose_1 == 1 && $ageGroup_person <= $ageGroup_province){
+            $_SESSION["personID"] = $personID;
+            $_SESSION["facilityID"] = $facilityID;
+            $_SESSION["doseNum"] = $doseNum;
+            $_SESSION["date"] = date('Y-m-d',strtotime($date_dose1.'+ 1 days'));
+            // print_r($_SESSION);
+            echo("<script>location.href = 'index.php?add_appointment';</script>");
+           }
+           else{
             echo("<script>location.href = 'index.php?appointment';</script>");
             set_message("The appointment is not available for your age!");
+           }
         }
+
     }
-    else if ($doseNum == 2){
-       if($dose_1 == '' && $ageGroup_person <= $ageGroup_province){
-        echo("<script>location.href = 'index.php?appointment';</script>");
-        set_message("Please book an appointment for Dose 1!");
-       }
-       else if($dose_1 == 1 && $ageGroup_person <= $ageGroup_province){
-        $_SESSION["personID"] = $personID;
-        $_SESSION["facilityID"] = $facilityID;
-        $_SESSION["doseNum"] = $doseNum;
-        $_SESSION["date"] = date('Y-m-d',strtotime($date_dose1.'+ 1 days'));
-        // print_r($_SESSION);
-        echo("<script>location.href = 'index.php?add_appointment';</script>");
-       }
-       else{
-        echo("<script>location.href = 'index.php?appointment';</script>");
-        set_message("The appointment is not available for your age!");
-       }
-        
-    }
+    
     $conn->close();
     exit();
   }
