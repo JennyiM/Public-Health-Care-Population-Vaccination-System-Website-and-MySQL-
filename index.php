@@ -420,6 +420,14 @@
 
 
             }
+            // facility information
+            if(isset($_GET['facility_information'])){
+
+
+                include(TEMPLATE . "/facility_information.php");
+
+
+            }
 
             
 
