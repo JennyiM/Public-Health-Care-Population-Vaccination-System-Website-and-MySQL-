@@ -21,7 +21,7 @@
                 </a>
             </div>
             <div class="item-bar col-lg-4 col-md-6 col-sm-12">
-                <a class="nav-link" href="index.php?"><i class="fas fa-ambulance"></i>
+                <a class="nav-link" href="index.php?display_given_date_facility"><i class="fas fa-ambulance"></i>
                 <p>Facility Schedule</p>
                 </a>
             </div>   

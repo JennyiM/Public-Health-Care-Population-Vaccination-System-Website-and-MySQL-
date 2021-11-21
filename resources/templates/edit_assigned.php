@@ -7,7 +7,7 @@ if(isset($_GET['SSN'])){
     $SSN = (int)$_GET['SSN'];
     $employee_ID = (int)$_GET['employee_ID'];
     $facilityID = (int)$_GET['facilityID'];
-    $query = "SELECT SSN,employee_ID,startDate,endDate,facilityID,hourly_rate FROM assigned WHERE SSN = $SSN  AND employee_ID = $employee_ID AND facilityID = $facilityID;";
+    $query = "SELECT SSN,employee_ID,startDate,endDate,facilityID,hourly_rate,startTime,endTime FROM assigned WHERE SSN = $SSN  AND employee_ID = $employee_ID AND facilityID = $facilityID;";
     if($result = $mysqli-> query($query)){
         while ($row = $result->fetch_assoc()){
             $SSN = $row["SSN"];
@@ -16,6 +16,8 @@ if(isset($_GET['SSN'])){
             $endDate = $row["endDate"];
             $facilityID = $row["facilityID"];
             $hourly_rate = $row["hourly_rate"];
+            $startTime = $row["startTime"];
+            $endTime = $row["endTime"];
         }
             
     }
@@ -28,9 +30,12 @@ if(isset($_GET['SSN'])){
         $endDate = $_POST["endDate"];
         $facilityID = $_POST["facilityID"];
         $hourly_rate = $_POST["hourly_rate"];
+        $startTime = $_POST["startTime"];
+        $endTime = $_POST["endTime"];
       
         $sql = "UPDATE assigned
-                SET SSN = $SSN, employee_ID = $employee_ID, startDate = '$startDate', endDate = '$endDate', facilityID = $facilityID, hourly_rate=$hourly_rate 
+                SET SSN = $SSN, employee_ID = $employee_ID, startDate = '$startDate', endDate = '$endDate', startTime = '$startTime', 
+                endTime = '$endTime',facilityID = $facilityID, hourly_rate=$hourly_rate 
                 WHERE SSN = $SSN AND employee_ID = $employee_ID AND facilityID = $facilityID;";
 
         if (mysqli_query($conn, $sql)) {
@@ -89,6 +94,16 @@ if(isset($_GET['SSN'])){
                 <div class="col-lg-4 mb-3">
                     <label for="hourly_rate">hourly_rate</label>
                     <input type="text" name="hourly_rate" placeholder="hourly_rate"  value="<?php echo $hourly_rate; ?>" >
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-lg-4 mb-3">
+                    <label for="startTime">Start Time</label>
+                    <input type="text" name="startTime" placeholder="startTime" value="<?php echo $startTime; ?>"  >
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <label for="endTime">End Time</label>
+                    <input type="text"  name="endTime" placeholder="endTime" value="<?php echo $endTime; ?>" >
                 </div>
             </div>
             <!--    confirm button-->
