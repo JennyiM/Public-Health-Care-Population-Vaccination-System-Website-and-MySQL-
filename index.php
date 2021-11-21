@@ -371,6 +371,25 @@
 
             }
 
+// Q13 & q18 
+
+            if(isset($_GET['display_nurse'])){
+
+
+                include(TEMPLATE . "/display_nurse.php");
+
+
+            } 
+
+            if(isset($_GET['display_nurse_performed'])){
+
+
+                include(TEMPLATE . "/display_nurse_performed.php");
+
+
+            } 
+
+
             
 
                ?>
