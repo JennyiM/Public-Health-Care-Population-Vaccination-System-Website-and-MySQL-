@@ -758,4 +758,79 @@ function add_infection_type(){
   exit();
 }
 }
+
+function display_given_date_facility($facilityID, $date){
+  connect();
+  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $facilityID = (int) $facilityID;
+  $query = "SELECT p.firstName, p.lastName,pw.title, DATE_FORMAT(a.startTime, '%H:%i') AS startTime, DATE_FORMAT(a.endTime, '%H:%i') AS endTime,a.startDate,a.endDate
+            FROM public_worker pw, assigned a, person p
+            WHERE pw.SSN = a.SSN AND p.personID = pw.personID AND facilityID = $facilityID AND ( '$date' BETWEEN a.startDate AND a.endDate);";
+
+  $query2 = "SELECT p.firstName, p.lastName, ap.date,ap.timeslot
+  FROM person p, appointment ap
+  WHERE p.personID = ap.personID AND ap.date= '$date' AND facilityID = $facilityID;";
+
+  if($result = $mysqli-> query($query)){
+    while ($row = $result->fetch_assoc()){
+      $firstName = $row["firstName"];
+      $lastName = $row["lastName"];
+      $title = $row["title"];
+      $startTime = $row["startTime"];
+      $endTime =$row["endTime"];
+      $startDate = $row["startDate"];
+      $endDate =$row["endDate"];
+      
+      $datefaciltiylist = <<<DELIMETER
+      <tr role="row">
+          <td row="cell">{$firstName}</td>
+          <td row="cell">{$lastName}</td>
+          <td row="cell">{$title}</td>
+          <td row="cell">{$startTime}</td>
+          <td row="cell">{$endTime}</td>
+          <td row="cell">{$startDate}</td>
+          <td row="cell">{$endDate}</td>
+      </tr> 
+      
+      DELIMETER;
+    
+      echo $datefaciltiylist;
+    }
+    $result->free(); 
+  }
+
+}
+
+function display_given_date_facility_appointment($facilityID, $date){
+  connect();
+  $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $facilityID = (int) $facilityID;
+  $query = "SELECT p.firstName, p.lastName, ap.date,ap.timeslot
+  FROM person p, appointment ap
+  WHERE p.personID = ap.personID AND ap.date= '$date' AND facilityID = $facilityID;";
+
+  if($result = $mysqli-> query($query)){
+    while ($row = $result->fetch_assoc()){
+      $firstName = $row["firstName"];
+      $lastName = $row["lastName"];
+      $date = $row["date"];
+      $timeslot = $row["timeslot"];
+      
+      $datefaciltiyapplist = <<<DELIMETER
+      <tr role="row">
+          <td row="cell">{$firstName}</td>
+          <td row="cell">{$lastName}</td>
+          <td row="cell">{$date}</td>
+          <td row="cell">{$timeslot}</td>
+      </tr> 
+      
+      DELIMETER;
+    
+      echo $datefaciltiyapplist;
+    }
+    $result->free(); 
+  }
+
+}
+
 ?>
