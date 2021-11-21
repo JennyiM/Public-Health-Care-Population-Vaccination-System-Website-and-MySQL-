@@ -396,6 +396,22 @@
 
 
             }
+// without appointment
+            if(isset($_GET['perform_vaccine_withoutapm'])){
+
+
+                include(TEMPLATE . "/perform_vaccine_withoutapm.php");
+
+
+            }
+
+            if(isset($_GET['perform_vaccine_findperson'])){
+
+
+                include(TEMPLATE . "/perform_vaccine_findperson.php");
+
+
+            }
 
             
 
