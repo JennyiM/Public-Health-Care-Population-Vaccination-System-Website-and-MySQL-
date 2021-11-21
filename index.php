@@ -405,13 +405,6 @@
 
             }
 
-            if(isset($_GET['perform_vaccine_findperson'])){
-
-
-                include(TEMPLATE . "/perform_vaccine_findperson.php");
-
-
-            }
  // Reports
             if(isset($_GET['reports'])){
 
