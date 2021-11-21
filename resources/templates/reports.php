@@ -13,12 +13,12 @@
             <div class="item-bar col-lg-3 col-md-6 col-sm-12">
             </div>
             <div class="item-bar col-lg-3 col-md-6 col-sm-12">
-                <a class="nav-link" href="index.php?facility_in_city"><i class="fas fa-tasks"></i>
+                <a class="nav-link" href="index.php?display_nurse_performed"><i class="fas fa-tasks"></i>
                 <p>Nurse Workload Report</p>
                 </a>
             </div>
             <div class="item-bar col-lg-3 col-md-6 col-sm-12">
-                <a class="nav-link" href="index.php?display_nurse_performed"><i class="fas fa-city"></i>
+                <a class="nav-link" href="index.php?facility_in_city"><i class="fas fa-city"></i>
                 <p>City Vaccination Report</p>
                 </a>
             </div>
