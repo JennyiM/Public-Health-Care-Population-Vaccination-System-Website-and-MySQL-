@@ -422,14 +422,15 @@
             }
             // facility information
             if(isset($_GET['facility_information'])){
-
-
                 include(TEMPLATE . "/facility_information.php");
+            }
+//display by date and facility-----------------------------------------------------
 
-
+            if(isset($_GET['display_given_date_facility'])){
+                include(TEMPLATE . "/display_given_date_facility.php");
             }
 
             
 
-               ?>
+ ?>
 <?php include(TEMPLATE . "/footer.php") ?>
