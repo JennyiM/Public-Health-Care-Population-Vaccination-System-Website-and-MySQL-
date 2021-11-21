@@ -61,7 +61,8 @@ function search_appointment($a){
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Perform Vaccine</li>
+                    <li class="breadcrumb-item"><a href="index.php?perform_vaccine">Perform a vaccine</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">With appointment</li>
                 </ol>
             </nav>
            

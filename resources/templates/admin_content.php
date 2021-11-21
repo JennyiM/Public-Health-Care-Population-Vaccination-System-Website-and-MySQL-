@@ -20,7 +20,7 @@
                 </a>
             </div>
             <div class="item-bar col-lg-3 col-md-6 col-sm-12">
-                <a class="nav-link" href="index.php?Facility_information"><i class="fas fa-clinic-medical"></i> 
+                <a class="nav-link" href="index.php?facility_information"><i class="fas fa-clinic-medical"></i> 
                 <p>Facility information </p>
                 </a>
             </div>

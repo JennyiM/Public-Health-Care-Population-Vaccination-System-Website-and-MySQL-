@@ -40,6 +40,7 @@ function display_no_nurse($d){
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php?facility_information">Facility Information</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Display No Nurse</li>
                 </ol>
             </nav>
