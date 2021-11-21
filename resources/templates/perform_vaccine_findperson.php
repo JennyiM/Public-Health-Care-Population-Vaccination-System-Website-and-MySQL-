@@ -24,7 +24,7 @@
                 </div>
                      <!--    confirm button-->
                 <div class="confirm_button col-lg-4 mb-3">
-                      <input type="submit" name="search_appointment" class="btn btn-dark pull-right" value="Search an appointment" >
+                      <input type="submit" name="search_person" class="btn btn-dark pull-right" value="search_person" >
                 </div>
             </div>
             <h6 class="bg-success"><?php display_message(); ?></h6>            
@@ -44,7 +44,7 @@
                   
                 <?php 
                 $personID = 0;
-                  if (isset($_POST['search_appointment'])) {
+                  if (isset($_POST['search_person'])) {
                       $personID = (int) $_POST['personID'];
 
                   }
