@@ -412,6 +412,14 @@
 
 
             }
+ // Reports
+            if(isset($_GET['reports'])){
+
+
+                include(TEMPLATE . "/reports.php");
+
+
+            }
 
             
 

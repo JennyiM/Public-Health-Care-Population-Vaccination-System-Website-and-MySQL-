@@ -56,12 +56,12 @@ function facility_in_city($a){
             <form class="user_info" action="" method="post" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="col-lg-4 mb-3">
-                    <label for="facility">Facility</label>
+                    <label for="facility">City</label>
                     <input type="text" name="facility" placeholder="facility"  required>
                 </div>
                      <!--    confirm button-->
                 <div class="confirm_button col-lg-4 mb-3">
-                      <input type="submit" name="search_facility" class="btn btn-dark pull-right" value="Search Facility" >
+                      <input type="submit" name="search_facility" class="btn btn-dark pull-right" value="Search City" >
                 </div>
             </div>
             <h6 class="bg-success"><?php display_message(); ?></h6>
