@@ -4,7 +4,7 @@ function search_appointment($a){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
   $personID = (int) $a;
-  $query = "SELECT person.personID, person.firstName, person.lastName, facility.address, facility.facilityID, appointment.doseNumber
+  $query = "SELECT person.personID, person.firstName, person.lastName, facility.facilityName, facility.facilityID, appointment.doseNumber
             FROM person, facility, appointment
             Where person.personID = $personID
                 AND person.deleted_ = 0
@@ -20,7 +20,7 @@ function search_appointment($a){
         $lastName = $row["lastName"];
         $middleInitial = '';
         $facilityID = $row["facilityID"];
-        $address = $row["address"];
+        $facilityName = $row["facilityName"];
         $doseNumber = $row["doseNumber"];
 
       $personlist = <<<DELIMETER
@@ -29,7 +29,7 @@ function search_appointment($a){
           <td row="cell">{$firstName}</td>
           <td row="cell">{$lastName}</td>
           <td row="cell">{$middleInitial}</td>
-          <td row="cell">{$address}</td>
+          <td row="cell">{$facilityName}</td>
           
           <td>
               <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?performingform&id=$personID&facilityID=$facilityID&doseNumber=$doseNumber'">Confirm</button>
