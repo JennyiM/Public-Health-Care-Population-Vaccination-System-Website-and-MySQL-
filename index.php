@@ -388,7 +388,14 @@
 
 
             } 
+            //Q19
+            if(isset($_GET['facility_in_city'])){
 
+
+                include(TEMPLATE . "/facility_in_city.php");
+
+
+            }
 
             
 
