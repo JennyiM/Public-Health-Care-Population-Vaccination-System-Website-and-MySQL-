@@ -84,7 +84,55 @@ function verify_appointment($a){
   
   
 }
-
+function vaccination_result_oversea($a){
+    connect();
+    $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+    $personID = (int) $a;
+    $query = "SELECT ov.lotNumber, ov.date, ov.country
+              FROM oversea_vaccination ov 
+              WHERE ov.personID = $personID;";
+    
+    if($result = $mysqli-> query($query)){
+        $counter = 1;
+      while ($row = $result->fetch_assoc()){
+       
+        $country = $row['country'];
+        $lotNumber = $row["lotNumber"];
+        $date = $row["date"];
+          
+        
+        $ovvaccinationlist =     
+        " 
+        <tr>
+            <td><span style='font-weight:bold'>Oversear Vaccine Administered Dose #{$counter}:</span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>PB COVID-19</td>
+        </tr>
+        <tr>
+            <td>Lot</td>
+            <td>{$lotNumber}</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>{$date}</td>
+        </tr>
+        <tr>
+            <td>Location</td>
+            <td>{$country}</td>
+        </tr>";
+        
+        
+        echo $ovvaccinationlist;
+        $counter++;
+      }
+    $result->free();
+    }
+  
+  
+}
 function vaccination_result($a){
     connect();
     $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
@@ -230,6 +278,10 @@ function infection_result($a){
         
             //appointment
             verify_appointment($personID);
+            
+            //oversea
+            vaccination_result_oversea($personID);
+
 
             //vaccination history
             vaccination_result($personID);
