@@ -494,7 +494,7 @@ function display_ageGroup($a){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
   $groupID = (int) $a;
-  $query = "SELECT * FROM age_group Where age_group.groupID = $groupID AND age_Group.deleted_ = 0;";
+  $query = "SELECT * FROM age_group Where age_group.groupID = $groupID AND age_group.deleted_ = 0;";
   if($result = $mysqli-> query($query)){
     while ($row = $result->fetch_assoc()){
       $groupID = $row["groupID"];
