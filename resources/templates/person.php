@@ -14,12 +14,12 @@
             <div class="form-row">
             <button type="button" class="btn btn-dark btn-adduser"onclick="window.location.href='index.php?add_person_in'">Add person in system</button>
             <button type="button" class="btn btn-dark btn-adduser"onclick="window.location.href='index.php?add_person_out'">Add person out system</button>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-3 mb-3">
                     <label for="personID">Person ID</label>
                     <input type="text" name="personID" placeholder="Person ID"  required>
                 </div>
                      <!--    confirm button-->
-                <div class="confirm_button col-lg-4 mb-3">
+                <div class="confirm_button col-lg-3 mb-3">
                       <input type="submit" name="search_person" class="btn btn-dark pull-right" value="Search Person" >
                 </div>
             </div>
