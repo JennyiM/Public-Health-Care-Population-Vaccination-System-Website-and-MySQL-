@@ -59,10 +59,9 @@ function verify_appointment($a){
         
         $appointlist =     
         "<tr>
-            <td>Appointment:</td>
+            <td><span style='font-weight:bold'>Appointment:</span></td>
             <td></td>
         </tr>
-        
         
         <tr>
             <td>Date</td>
@@ -109,7 +108,7 @@ function vaccination_result($a){
         $vaccinationlist =     
         " 
         <tr>
-            <td>Vaccine Administered Dose #{$counter}:</td>
+            <td><span style='font-weight:bold'>Vaccine Administered Dose #{$counter}:</span></td>
             <td></td>
         </tr>
         <tr>
@@ -163,7 +162,7 @@ function infection_result($a){
         $infectionlist =     
         "
         <tr>
-            <td>Positive COVID-19 Diagnostic #{$counter}:</td>
+            <td><span style='font-weight:bold'>Positive COVID-19 Diagnostic #{$counter}:</span></td>
             <td></td>
         </tr>
         <tr>
@@ -224,7 +223,7 @@ function infection_result($a){
             $personID =(int) $_POST['personID'];
             //user information
             echo"<tr>
-                    <td>User Information:</td>
+                    <td><span style='font-weight:bold'>User Information:</span></td>
                     <td></td>
                 </tr>";
             search_information($personID);
