@@ -60,7 +60,7 @@ while($spot_time <= $closehrs && $spot_time <= $endhrs){
     WHERE facilityID = $facilityID AND date = '$date' AND timeslot ='$spot_str' AND deleted_ = 0;";
     $result = mysqli_query($conn,$sql);
     $rowcount = (int) mysqli_num_rows($result);
-    echo $rowcount;
+    // echo $rowcount;
     
     if($rowcount > 0){
         $spot_list =  "<option value='$spot_str' disabled> $spot_str </option>" . $spot_list;
