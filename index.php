@@ -422,7 +422,14 @@
             if(isset($_GET['display_given_date_facility'])){
                 include(TEMPLATE . "/display_given_date_facility.php");
             }
+// person information
+             if(isset($_GET['person_information'])){
 
+
+                include(TEMPLATE . "/person_information.php");
+
+
+            }
             
 
  ?>
