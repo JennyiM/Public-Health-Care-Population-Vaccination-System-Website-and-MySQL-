@@ -104,7 +104,7 @@ function vaccination_result_oversea($a){
         $ovvaccinationlist =     
         " 
         <tr>
-            <td><span style='font-weight:bold'>Oversear Vaccine Administered Dose #{$counter}:</span></td>
+            <td><span style='font-weight:bold'>Oversea Vaccine Administered Dose #{$counter}:</span></td>
             <td></td>
         </tr>
         <tr>
