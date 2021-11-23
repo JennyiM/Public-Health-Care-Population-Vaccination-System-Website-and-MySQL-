@@ -41,6 +41,16 @@
                     <input type="text" name="hourly_rate" placeholder="hourly_rate" required>
                 </div>
             </div>
+            <div class="form-row">
+                <div class="col-lg-4 mb-3">
+                    <label for="startTime">Start Hour</label>
+                    <input type="text" name="startTime" placeholder="startTime"  required>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <label for="endTime">End Hour</label>
+                    <input type="text"  name="endTime" placeholder="endTime"  required>
+                </div>
+            </div>
             
             <!--    confirm button-->
             <div class="form-row">

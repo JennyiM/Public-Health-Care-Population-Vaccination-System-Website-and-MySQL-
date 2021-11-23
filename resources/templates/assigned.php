@@ -35,6 +35,8 @@
                     <th scope="col" role="columnheader">Start Date</th>
                     <th scope="col" role="columnheader">End Date</th>
                     <th scope="col" role="columnheader">Hourly Rate</th>
+                    <th scope="col" role="columnheader">Start Hour</th>
+                    <th scope="col" role="columnheader">End Hour</th>
                     <th scope="col" role="columnheader"></th>
                 </tr>
                 </thead>

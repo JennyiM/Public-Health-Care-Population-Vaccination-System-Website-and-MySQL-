@@ -423,7 +423,7 @@ function display_assigned($a){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
   $SSN = (int) $a;
-  $query = "SELECT a.SSN, p.firstName,p.lastName, f.facilityName,pw.title,a.startDate,a.endDate,a.hourly_rate,a.facilityID,a.employee_ID
+  $query = "SELECT a.SSN, p.firstName,p.lastName, f.facilityName,pw.title,a.startDate,a.endDate,a.hourly_rate,a.facilityID,a.employee_ID,DATE_FORMAT(a.startTime, '%H:%i') AS startTime,DATE_FORMAT(a.endTime, '%H:%i') AS endTime
             FROM assigned a, public_worker pw,person p, facility f
             WHERE a.SSN=$SSN AND a.SSN = pw.SSN AND pw.personID = p.personID AND f.facilityID = a.facilityID AND a.deleted_ = 0;";
   if($result = $mysqli-> query($query)){
@@ -438,7 +438,8 @@ function display_assigned($a){
         $hourly_rate = $row["hourly_rate"];
         $facilityID = $row["facilityID"];
         $employee_ID = $row["employee_ID"];
-
+        $startTime = $row["startTime"];
+        $endTime = $row["endTime"];
 
         $assignlist = <<<DELIMETER
         <tr role="row">
@@ -450,7 +451,8 @@ function display_assigned($a){
             <td row="cell">{$startDate}</td>
             <td row="cell">{$endDate}</td>
             <td row="cell">{$hourly_rate}</td>
-
+            <td row="cell">{$startTime}</td>
+            <td row="cell">{$endTime}</td>
           <td>
                 <button type="button" class="btn btn-sm btn-dark" onclick ="window.location.href = 'index.php?edit_assigned&SSN=$SSN&employee_ID=$employee_ID&facilityID=$facilityID'">Edit</button>
                 <button type="button" class="btn btn-sm btn-danger" onclick ="window.location.href = 'index.php?delete_assigned&SSN=$SSN&employee_ID=$employee_ID&facilityID=$facilityID'">Delete</button>
@@ -474,7 +476,9 @@ function add_assigned(){
       $endDate = $_POST["endDate"];
       $facilityID = $_POST["facilityID"];
       $hourly_rate = $_POST["hourly_rate"];
-      $sql = "INSERT INTO assigned VALUES ($SSN,$employee_ID,'$startDate','$endDate',$facilityID,$hourly_rate,0);";
+      $startTime = $_POST["startTime"];
+      $endTime = $_POST["endTime"];
+      $sql = "INSERT INTO assigned VALUES ($SSN,$employee_ID,'$startDate','$endDate',$facilityID,$hourly_rate,0,'$startTime','$endTime');";
       
       if (mysqli_query($conn, $sql)) {
         echo "New record created successfully";
