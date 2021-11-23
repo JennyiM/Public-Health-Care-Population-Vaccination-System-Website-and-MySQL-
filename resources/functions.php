@@ -156,7 +156,7 @@ function display_person($a){
 }
     $conn->close();
    set_message("PERSON CREATED");
-   redirect("index.php?person");
+   echo("<script>location.href = 'index.php?person';</script>");
    exit();
  }
  }
@@ -196,7 +196,7 @@ if (mysqli_query($conn, $sql2)) {
 }
    $conn->close();
   set_message("PERSON CREATED");
-  redirect("index.php?person");
+  echo("<script>location.href = 'index.php?person';</script>");
   exit();
 }
 }
@@ -705,7 +705,7 @@ function display_infection_type($a){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
   $typeID = (int)$a;
-  $query = "SELECT * FROM infection_type Where infection_type.typeID = $typeID; /*AND person.deleted_ = 0;*/" ;
+  $query = "SELECT * FROM infection_type Where infection_type.typeID = $typeID AND deleted_ = 0;";
   if($result = $mysqli-> query($query)){
     while ($row = $result->fetch_assoc()){
       $typeID = $row["typeID"];

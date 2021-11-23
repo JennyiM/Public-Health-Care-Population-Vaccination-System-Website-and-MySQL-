@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="suspenedDate">suspened Date</label>
-                    <input type="text" name="suspenedDate" placeholder="suspenedDate" aria-describedby="inputGroupPrepend3" required>
+                    <input type="text" name="suspenedDate" placeholder="suspenedDate" aria-describedby="inputGroupPrepend3">
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="approvedDate">approved Date</label>

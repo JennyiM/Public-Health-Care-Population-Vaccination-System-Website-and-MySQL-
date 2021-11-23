@@ -43,7 +43,7 @@ while($spot_time <= $closehrs){
 
     if($rowcount == 0){
         $spot_list =  "<option value='' > $spot_str </option>" . $spot_list;
-        // $_SESSION['timeslot'] = $spot_str;
+        $_SESSION['timeslot'] = $spot_str;
         break;
     }
    
@@ -57,7 +57,7 @@ if($spot_list == ''){
     echo("<script>window.location.reload();</script>");
 }
 //  $_SESSION['timeslot'] = $spot_str;
-$conn->close();
+// $conn->close();
 
 if (isset($_POST['add_appointment'])) {
     $conn = connect();
@@ -66,7 +66,7 @@ if (isset($_POST['add_appointment'])) {
     $doseNum = $_POST['dosenum'];
     $date = $_POST['date'];
     $timeslot = $_SESSION['timeslot'];
-    echo $timeslot;
+    // echo $timeslot;
     $sql = "INSERT INTO appointment
       VALUES ($personID,'$facilityID','$date','$timeslot','$doseNum',0);";
    
@@ -143,7 +143,7 @@ if (isset($_POST['add_appointment'])) {
                     <input type="date" class="input-medium search-query" onkeypress="return false" name="date" value = "<?php echo $_SESSION["date"]; ?>" required>
                 </div>
                 <!-- <div class="col-lg-4 mb-3"> -->
-                <select class="form-select form-select-lg mb-3" name = "<?php echo $_SESSION["timeslot"]; ?>" aria-label=".form-select-lg example">
+                <select class="form-select form-select-lg mb-3" name = "timeslot" aria-label=".form-select-lg example">
                    <option selected>Choose a Timeslot</option>
                   <?php echo $spot_list; ?>
                 </select>
