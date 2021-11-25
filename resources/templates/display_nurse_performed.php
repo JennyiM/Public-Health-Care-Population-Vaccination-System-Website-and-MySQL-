@@ -12,7 +12,8 @@ WHERE public_worker.title = 'Nurse'
 		AND vaccination.facilityID = assigned.facilityID
 		AND assigned.SSN = public_worker.SSN
 GROUP BY person.personID
-HAVING Number_of_Dose>=20;";
+HAVING Number_of_Dose>=20
+ORDER BY Number_of_Dose DESC;";
 
     if($result = $mysqli-> query($query)){
     while ($row = $result->fetch_assoc()){
