@@ -68,7 +68,7 @@ if(isset($_GET['id'])){
         }
      
         set_message("Record updated");
-        redirect("index.php?person");
+        echo("<script>location.href = 'index.php?person';</script>");
         exit();
     }
     $conn->close();
