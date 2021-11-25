@@ -57,7 +57,7 @@ if(isset($_GET['SSN'])){
             <div class="form-row">
                 <div class="col-lg-4 mb-3">
                     <label for="SSN">SSN</label>
-                    <input type="text" name="SSN" placeholder="SSN" value="<?php echo $SSN; ?>"  >
+                    <input type="text" name="SSN" placeholder="SSN" value="<?php echo $SSN; ?>" readonly >
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="title">Title</label>
@@ -65,7 +65,7 @@ if(isset($_GET['SSN'])){
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="personID">personID</label>
-                    <input type="text" name="personID" placeholder="personID"  value="<?php echo $personID; ?>" >
+                    <input type="text" name="personID" placeholder="personID"  value="<?php echo $personID; ?>" readonly>
                 </div>
             </div>
             <!--    confirm button-->
