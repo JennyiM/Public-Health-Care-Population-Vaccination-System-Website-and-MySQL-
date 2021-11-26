@@ -28,10 +28,17 @@ if(isset($_GET['lotNumber'])){
         $suspendedDate = $_POST["suspendedDate"];
         $approvedDate=$_POST["approvedDate"];
         $status=$_POST["status"];
-                
-        $sql1 = "UPDATE vaccin_status
+        if($suspendedDate == ''){
+            $sql1 = "UPDATE vaccin_status
+                SET type = '$type', suspendedDate = NULL,approvedDate='$approvedDate',status='$status'
+                WHERE vaccin_status.lotNumber= '$lotNumber';";
+        }
+        else {
+            $sql1 = "UPDATE vaccin_status
                 SET type = '$type', suspendedDate = '$suspendedDate',approvedDate='$approvedDate',status='$status'
                 WHERE vaccin_status.lotNumber= '$lotNumber';";
+        }
+        
             
             
             

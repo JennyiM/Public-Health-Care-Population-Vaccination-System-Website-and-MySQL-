@@ -611,8 +611,15 @@ function add_vaccine_type(){
   $suspenedDate = $_POST['suspenedDate'];
   $approvedDate = $_POST['approvedDate'];
   $status = $_POST['status'];
-  $sql = "INSERT INTO vaccin_status 
+  if($suspendedDate == ''){
+    $sql = "INSERT INTO vaccin_status 
+    VALUES ('$lotNumber','$type',NULL,'$approvedDate','$status',0);";
+  }
+  else {
+    $sql = "INSERT INTO vaccin_status 
     VALUES ('$lotNumber','$type','$suspenedDate','$approvedDate','$status',0);";
+  }
+ 
    if (mysqli_query($conn, $sql)) {
   echo "New record created successfully";
 } else {
