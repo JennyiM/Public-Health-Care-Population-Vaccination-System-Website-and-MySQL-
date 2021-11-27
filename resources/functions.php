@@ -844,13 +844,17 @@ function display_given_date_facility_appointment($facilityID, $date){
 
 }
 
-function search_person($a){
+function search_person($a,$b){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-  $personID = (int) $a;
+
+  $firstName = $a;
+  $lastName = $b;
+
   $query = "SELECT person.personID, person.firstName, person.lastName
             FROM person
-            Where person.personID = $personID
+            WHERE person.firstName = '$firstName'
+                AND person.lastName = '$lastName'
                 AND person.deleted_ = 0;";
                
  
