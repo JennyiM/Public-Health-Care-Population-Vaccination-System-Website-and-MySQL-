@@ -69,11 +69,12 @@ function search_appointment($a,$b){
            
             <form class="user_info" action="" method="post" enctype="multipart/form-data">
             <div class="form-row">
-                <div class="col-lg-5 mb-2">
+                <div class="col-lg-8 mb-2">
                     <label for="firstName">First name</label>
                     <input type="text" name="firstName" placeholder="First name"  require>
                     <label for="lastName">Last name</label>
                     <input type="text" name="lastName" placeholder="Last name" require >
+                    <br></br>
                     <label for="middleInitil">Middle initial</label>
                     <input type="text" name="middleInitil" placeholder="Middle initial" >
                 </div>

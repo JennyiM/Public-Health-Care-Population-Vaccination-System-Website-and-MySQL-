@@ -16,11 +16,6 @@
     
     
     
-    
-    
-    
-    
-    
     if(isset($_POST['perform_a_vaccine_without_apm'])){
             
     
@@ -36,8 +31,6 @@
                     VALUES ($personID,'$lotNumber',$facilityID,$workingID,'$date',$doseNumber,0);";
 
         
-
-
 
         if (mysqli_query($conn, $sql1)) {
             echo "Record creates successfully";
