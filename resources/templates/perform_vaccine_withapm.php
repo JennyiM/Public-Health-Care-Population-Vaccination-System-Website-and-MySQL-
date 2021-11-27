@@ -1,14 +1,18 @@
 <?php
 
-function search_appointment($a){
+function search_appointment($a,$b){
   connect();
   $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-  $personID = (int) $a;
+
+  $firstName = $a;
+  $lastName = $b;
+
   $query = "SELECT person.personID, person.firstName, person.lastName, facility.facilityName, facility.facilityID, appointment.doseNumber
             FROM person, facility, appointment
-            Where person.personID = $personID
+            Where person.firstName = '$firstName'
+                AND person.lastName = '$lastName'
                 AND person.deleted_ = 0
-                AND appointment.personID = $personID
+                AND appointment.personID = person.personID
                 AND appointment.deleted_ = 0 
                 AND appointment.facilityID = facility.facilityID
                 AND facility.deleted_ = 0;";
@@ -40,9 +44,6 @@ function search_appointment($a){
       DELIMETER;
     
       echo $personlist;
-
-    //是不是要让已经接种过的appointment消失
-    //UPDATE appointment SET deleted_ = 1 WHERE appointment.personID  appointment.facilityID
     
 
     }
@@ -68,14 +69,11 @@ function search_appointment($a){
            
             <form class="user_info" action="" method="post" enctype="multipart/form-data">
             <div class="form-row">
-                <div class="col-lg-8 mb-2">
-                    <label for="personID">Person ID</label>
-                    <input type="text" name="personID" placeholder="Person ID"  required>
+                <div class="col-lg-5 mb-2">
                     <label for="firstName">First name</label>
-                    <input type="text" name="firstName" placeholder="First name" >
-                    <br></br>
-                    <label for="lastName"> Last name</label>
-                    <input type="text" name="lastName" placeholder="Last name"  >
+                    <input type="text" name="firstName" placeholder="First name"  require>
+                    <label for="lastName">Last name</label>
+                    <input type="text" name="lastName" placeholder="Last name" require >
                     <label for="middleInitil">Middle initial</label>
                     <input type="text" name="middleInitil" placeholder="Middle initial" >
                 </div>
@@ -100,14 +98,13 @@ function search_appointment($a){
                 <tbody role="rowgroup">
                   
                 <?php 
-                $personID = 0;
-                  if (isset($_POST['search_appointment'])) {
-                      $personID = (int) $_POST['personID'];
-
-                  }
-                
-                search_appointment($personID); 
-                
+                if (isset($_POST['search_appointment'])) {
+                    
+                    $firstName = $_POST['firstName'];
+                    $lastName = $_POST['lastName'];
+                    search_appointment($firstName,$lastName); 
+                    
+                }
                 
                 ?>
               

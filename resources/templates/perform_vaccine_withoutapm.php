@@ -35,14 +35,11 @@
         $sql1 = "INSERT INTO vaccination
                     VALUES ($personID,'$lotNumber',$facilityID,$workingID,'$date',$doseNumber,0);";
 
-        $sql2 = "UPDATE appointment
-                 SET appointment.deleted_ = 1
-                 WHERE appointment.personID = $personID 
-                       AND appointment.doseNumber = $doseNumber;";
+        
 
 
 
-        if (mysqli_query($conn, $sql1) AND mysqli_query($conn, $sql2)) {
+        if (mysqli_query($conn, $sql1)) {
             echo "Record creates successfully";
         } 
         else {

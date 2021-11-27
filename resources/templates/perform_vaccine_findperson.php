@@ -12,14 +12,11 @@
            
             <form class="user_info" action="" method="post" enctype="multipart/form-data">
             <div class="form-row">
-                <div class="col-lg-8 mb-2">
-                    <label for="personID">Person ID</label>
-                    <input type="text" name="personID" placeholder="Person ID"  required>
+                <div class="col-lg-5 mb-2">
                     <label for="firstName">First name</label>
-                    <input type="text" name="firstName" placeholder="First name"  >
-                    <br></br>
+                    <input type="text" name="firstName" placeholder="First name"  require>
                     <label for="lastName">Last name</label>
-                    <input type="text" name="lastName" placeholder="Last name"  >
+                    <input type="text" name="lastName" placeholder="Last name"  require>
                     <label for="middleInitil">Middle initial</label>
                     <input type="text" name="middleInitil" placeholder="Middle initial" >
                 </div>
@@ -44,15 +41,14 @@
                 <tbody role="rowgroup">
                   
                 <?php 
-                $personID = 0;
-                  if (isset($_POST['search_person'])) {
-                      $personID = (int) $_POST['personID'];
-
-                  }
                 
-                search_person($personID); 
+                if (isset($_POST['search_person'])) {
+                    $firstName = $_POST['firstName'];
+                    $lastName = $_POST['lastName'];
                 
-                
+                    search_person($firstName,$lastName); 
+                }
+            
                 ?>
               
                 </tbody>
