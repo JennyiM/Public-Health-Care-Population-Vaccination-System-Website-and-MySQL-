@@ -17,7 +17,7 @@ if (isset($_POST['add_appointment_check'])) {
     if($rowcount == 0){
         $sql1= "SELECT groupID FROM age_group WHERE (SELECT birthDate FROM person WHERE personID = $personID) BETWEEN startDate AND endDate;";
         $sql2= "SELECT vacAgeGroup FROM province WHERE provinceName = (SELECT province FROM facility WHERE facilityID = $facilityID);";
-        $sql3 ="SELECT date,doseNumber FROM vaccination WHERE personID = $personID AND doseNumber = $doseNum;";
+        $sql3 ="SELECT date,doseNumber FROM vaccination WHERE personID = $personID AND doseNumber = 1;";
         $sql4 ="SELECT personID FROM public_worker WHERE personID = $personID;";
         $result1 = mysqli_query($conn,$sql1);
         $row1 =  mysqli_fetch_row($result1);
