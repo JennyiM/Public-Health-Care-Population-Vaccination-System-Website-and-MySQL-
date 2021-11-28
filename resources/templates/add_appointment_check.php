@@ -67,8 +67,13 @@ if (isset($_POST['add_appointment_check'])) {
                 $_SESSION["personID"] = $personID;
                 $_SESSION["facilityID"] = $facilityID;
                 $_SESSION["doseNum"] = $doseNum;
-                if strtotime($date) <= strtotime($date_dose1.'+ 14days'){
-                $_SESSION["date"] = date('Y-m-d',strtotime($date_dose1.'+ 1 days'));
+                $date_org = strtotime($date);
+                $date_should = strtotime($date_dose1.'+ 14days');
+                if ($date_org<= $date_should){
+                $_SESSION["date"] = date('Y-m-d',strtotime($date_dose1.'+ 14 days'));
+                }
+                else{
+                    $_SESSION["date"] = $date;
                 }
                 
                 // print_r($_SESSION);
