@@ -18,13 +18,13 @@ defined("TEMPLATE") ? null : define("TEMPLATE", __DIR__ . DS . "templates");
 // 
 // defined("DB_NAME") ? null : define("DB_NAME",  "ymc353_2");
 
-defined("DB_HOST") ? null : define("DB_HOST", "localhost");
+defined("DB_HOST") ? null : define("DB_HOST", "databases.000webhost.com");
 
-defined("DB_USER") ? null : define("DB_USER","root");
+defined("DB_USER") ? null : define("DB_USER","id18386800_janee");
 
-defined("DB_PASS") ? null : define("DB_PASS", "Abcd@123");
+defined("DB_PASS") ? null : define("DB_PASS", "wbgy2ZsBgGXHF%tH");
 
-defined("DB_NAME") ? null : define("DB_NAME",  "ymc353_2");
+defined("DB_NAME") ? null : define("DB_NAME",  "id18386800_ymc353");
 
 define("DB_SET_CHARSET", "utf-8");
 
