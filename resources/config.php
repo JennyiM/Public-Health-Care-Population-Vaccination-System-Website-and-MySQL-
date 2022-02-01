@@ -18,7 +18,7 @@ defined("TEMPLATE") ? null : define("TEMPLATE", __DIR__ . DS . "templates");
 // 
 // defined("DB_NAME") ? null : define("DB_NAME",  "ymc353_2");
 
-defined("DB_HOST") ? null : define("DB_HOST", "databases.000webhost.com");
+defined("DB_HOST") ? null : define("DB_HOST", "localhost.000webhost.com");
 
 defined("DB_USER") ? null : define("DB_USER","id18386800_janee");
 
